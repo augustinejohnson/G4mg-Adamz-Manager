@@ -6,6 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>G4mg - Adamz Pharmacy & Stores Ltd</title>
     <meta name="description" content="G4mg - Adamz Pharmacy & Stores Ltd. Contact us on WhatsApp: +2348063004747">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Pharmacy",
+      "name": "G4mg - Adamz Pharmacy & Stores Ltd",
+      "telephone": "+2348063004747",
+      "url": "https://g4mg-adamzpharmacy.com",
+      "description": "Fully Mobile Optimized Advanced Analytics Pharmacy System.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Road",
+        "addressLocality": "Oghara",
+        "addressRegion": "Delta State"
+      }
+    }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -180,6 +196,11 @@
 
             <!-- ACTIONS (Right) -->
             <div class="flex items-center gap-3 md:gap-5 shrink-0">
+                <a href="https://wa.me/2348063004747" target="_blank" rel="noopener noreferrer"
+                    class="bg-green-500 hover:bg-green-600 text-white p-2 rounded-full shadow-lg transition-transform hover:scale-110 flex items-center justify-center h-8 w-8"
+                    title="Chat on WhatsApp">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                </a>
                 <button onclick="app.toggleLandingPage(true)"
                     class="hidden md:block bg-amber-400/20 border border-amber-400/50 text-amber-300 px-3 py-1 rounded-full text-xs font-bold hover:bg-amber-400/30 transition shadow-sm">
                     <i class="fas fa-crown mr-1"></i> Premium
@@ -1156,15 +1177,34 @@
             </div>
         </section>
 
-        <div id="edit-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center z-50">
-            <div class="bg-white p-6 rounded shadow-lg w-full max-w-sm mx-4 max-h-[90vh] overflow-y-auto">
-                <h3 class="text-xl font-bold mb-4">Edit Order Quantity</h3>
-                <p class="text-sm text-gray-500 mb-2">Admin Override</p>
-                <div id="modal-items-list" class="space-y-4 mb-4"></div>
-                <div class="flex justify-end gap-2 border-t pt-4">
+        <div id="edit-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center z-[60]">
+            <div class="bg-white p-6 rounded shadow-lg w-full max-w-md mx-4 max-h-[90vh] flex flex-col">
+                <h3 class="text-xl font-bold mb-1">Modify Order</h3>
+                <p class="text-sm text-gray-500 mb-4 pb-2 border-b">Admin Override: Adjust qty, delete, or add products.</p>
+                
+                <!-- Scrollable Item List -->
+                <div id="modal-items-list" class="space-y-3 mb-4 overflow-y-auto flex-grow pr-2"></div>
+                
+                <!-- Add New Product Section -->
+                <div class="bg-gray-50 p-3 rounded-lg border border-gray-200 mb-4">
+                    <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fas fa-plus-circle text-green-600 mr-1"></i> Add Product to Order</label>
+                    <div class="flex flex-col gap-2">
+                        <select id="edit-add-product-select" class="w-full border rounded p-2 text-sm focus:ring-primary-800 outline-none">
+                            <option value="">Select a product...</option>
+                        </select>
+                        <div class="flex gap-2">
+                            <input type="number" id="edit-add-product-qty" value="1" min="1" class="w-20 border rounded p-2 text-sm text-center focus:ring-primary-800 outline-none" placeholder="Qty">
+                            <button onclick="app.addEditOrderProduct()" class="flex-grow bg-green-100 hover:bg-green-200 text-green-800 border border-green-300 rounded px-3 py-2 text-sm font-bold transition">
+                                Add to Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-2 border-t pt-4 shrink-0">
                     <button onclick="document.getElementById('edit-modal').classList.add('hidden')"
-                        class="px-4 py-2 bg-gray-300 rounded">Cancel</button>
-                    <button onclick="app.saveOrderEdits()" class="px-4 py-2 bg-primary-800 text-white rounded">Save
+                        class="px-5 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold rounded transition">Cancel</button>
+                    <button onclick="app.saveOrderEdits()" class="px-5 py-2 bg-primary-800 hover:bg-primary-900 text-white font-bold rounded shadow transition">Save
                         Changes</button>
                 </div>
             </div>
@@ -3922,39 +3962,141 @@
 
             openEditModal: function (orderId) {
                 const order = this.state.orders.find(o => o.docId === orderId);
-                this.state.editingOrder = JSON.parse(JSON.stringify(order));
-                const container = document.getElementById('modal-items-list'); container.innerHTML = '';
-                this.state.editingOrder.items.forEach((item, index) => {
-                    container.innerHTML += `<div class="flex justify-between items-center bg-gray-50 p-3 rounded border"><div><div class="font-bold text-sm">${item.name}</div><div class="text-xs text-gray-500">Unit: ₦${item.price}</div></div><div class="flex items-center gap-2"><label class="text-xs font-bold">Qty:</label><input type="number" id="edit-qty-${index}" value="${item.qty}" min="0" class="w-20 border rounded p-1 text-center"></div></div>`;
+                this.state.editingOrder = JSON.parse(JSON.stringify(order)); // Deep copy
+                
+                // Populate product dropdown
+                const select = document.getElementById('edit-add-product-select');
+                select.innerHTML = '<option value="">Select a product...</option>';
+                this.state.products.forEach(p => {
+                    select.innerHTML += `<option value="${p.id}">${p.name} - ${p.category}</option>`;
                 });
+                
+                this.renderEditOrderItems();
                 document.getElementById('edit-modal').classList.remove('hidden');
             },
+            
+            renderEditOrderItems: function() {
+                const container = document.getElementById('modal-items-list'); 
+                container.innerHTML = '';
+                this.state.editingOrder.items.forEach((item, index) => {
+                    container.innerHTML += `
+                    <div class="flex flex-col gap-2 bg-gray-50 p-3 rounded-lg border border-gray-200">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="font-bold text-sm text-gray-800">${item.name}</div>
+                                <div class="text-xs text-gray-500 font-medium">Unit Price: ₦${item.price}</div>
+                            </div>
+                            <button onclick="app.deleteEditOrderItem(${index})" class="text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-1.5 rounded transition" title="Delete from order">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                        <div class="flex justify-between items-center mt-1">
+                            <label class="text-xs font-bold text-gray-600">Quantity:</label>
+                            <input type="number" id="edit-qty-${index}" value="${item.qty}" min="1" onchange="app.state.editingOrder.items[${index}].qty = parseInt(this.value) || 1" class="w-20 border rounded p-1.5 text-center text-sm font-bold focus:ring-primary-800 outline-none">
+                        </div>
+                    </div>`;
+                });
+            },
+
+            deleteEditOrderItem: function(index) {
+                if(confirm("Remove this item from the order?")) {
+                    this.state.editingOrder.items.splice(index, 1);
+                    this.renderEditOrderItems();
+                }
+            },
+
+            addEditOrderProduct: function() {
+                const select = document.getElementById('edit-add-product-select');
+                const qtyInput = document.getElementById('edit-add-product-qty');
+                const prodId = select.value;
+                const qty = parseInt(qtyInput.value) || 1;
+                
+                if(!prodId) return alert("Please select a product first.");
+                
+                const product = this.state.products.find(p => p.id === prodId);
+                if(!product) return;
+
+                // Determine price based on customer role (default to retail if not wholesale)
+                // Need to fetch customer role from users collection or assume based on previous items if needed
+                // For safety, we check if the customer has "wholesale" role in our users list
+                let price = product.retailPrice;
+                const customerUser = this.state.users ? this.state.users.find(u => u.email === this.state.editingOrder.customer.email) : null;
+                if (customerUser && customerUser.role === 'wholesale') {
+                    price = product.wholesalePrice;
+                }
+
+                // Check if already in order
+                const existingIndex = this.state.editingOrder.items.findIndex(i => i.id === product.id);
+                if (existingIndex > -1) {
+                    this.state.editingOrder.items[existingIndex].qty += qty;
+                } else {
+                    this.state.editingOrder.items.push({
+                        id: product.id,
+                        name: product.name,
+                        qty: qty,
+                        price: price,
+                        category: product.category || 'General'
+                    });
+                }
+                
+                this.renderEditOrderItems();
+                
+                // Reset inputs
+                select.value = '';
+                qtyInput.value = '1';
+            },
+
             saveOrderEdits: function () {
                 const oldOrder = this.state.orders.find(o => o.docId === this.state.editingOrder.docId);
                 const batch = db.batch();
                 let newTotal = 0;
-                this.state.editingOrder.items.forEach((item, index) => {
-                    const inputVal = document.getElementById(`edit-qty-${index}`).value;
-                    const newQty = parseInt(inputVal);
-                    const oldQty = oldOrder.items[index].qty;
-                    if (oldOrder.isReceived) {
-                        const diff = newQty - oldQty;
-                        if (diff !== 0) {
-                            const product = this.state.products.find(p => p.id === item.id);
-                            if (product) {
-                                const prodRef = db.collection('products').doc(product.docId);
-                                batch.update(prodRef, { stock: firebase.firestore.FieldValue.increment(-diff) });
-                            }
+                
+                // Track stock changes
+                const stockAdjustments = {}; // { docId: delta }
+
+                // 1. If order was already received, we need to completely refund old stock, then deduct new stock.
+                // Or we can just calculate the delta for each product.
+                if (oldOrder.isReceived) {
+                    // + Refund old items
+                    oldOrder.items.forEach(oldItem => {
+                        const prod = this.state.products.find(p => p.id === oldItem.id);
+                        if(prod) {
+                            stockAdjustments[prod.docId] = (stockAdjustments[prod.docId] || 0) + oldItem.qty;
                         }
-                    }
-                    item.qty = newQty;
-                    newTotal += item.price * newQty;
+                    });
+                    
+                    // - Deduct new items
+                    this.state.editingOrder.items.forEach(newItem => {
+                        const prod = this.state.products.find(p => p.id === newItem.id);
+                        if(prod) {
+                            stockAdjustments[prod.docId] = (stockAdjustments[prod.docId] || 0) - newItem.qty;
+                        }
+                    });
+                }
+
+                // 2. Calculate New Total
+                this.state.editingOrder.items.forEach(item => {
+                    newTotal += (item.price * item.qty);
                 });
+
+                // 3. Apply Stock Adjustments
+                Object.keys(stockAdjustments).forEach(docId => {
+                    const diff = stockAdjustments[docId];
+                    if (diff !== 0) {
+                        const prodRef = db.collection('products').doc(docId);
+                        batch.update(prodRef, { stock: firebase.firestore.FieldValue.increment(diff) });
+                    }
+                });
+
                 const orderRef = db.collection('orders').doc(this.state.editingOrder.docId);
                 batch.update(orderRef, { items: this.state.editingOrder.items, total: newTotal });
+                
                 batch.commit().then(() => {
                     document.getElementById('edit-modal').classList.add('hidden');
-                    alert("Order updated successfully.");
+                    alert("Order successfully modified.");
+                }).catch(err => {
+                    console.error("Error saving edits:", err);
+                    alert("Failed to save changes.");
                 });
             },
             showLowStock: function () {
