@@ -57,6 +57,14 @@
         try {
             firebase.initializeApp(firebaseConfig);
             db = firebase.firestore();
+            db.enablePersistence()
+              .catch(function(err) {
+                  if (err.code == 'failed-precondition') {
+                      console.warn('Multiple tabs open, persistence can only be enabled in one tab at a a time.');
+                  } else if (err.code == 'unimplemented') {
+                      console.warn('The current browser does not support all of the features required to enable persistence');
+                  }
+              });
             auth = firebase.auth();
             console.log("Firebase Connected");
         } catch (error) {
@@ -172,6 +180,8 @@
             }
         }
     </style>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2563eb">
 </head>
 
 <body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
@@ -4670,6 +4680,17 @@
             app.init();
             window.app = app; // Ensure Global Access
         });
+    </script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
     </script>
 </body>
 
