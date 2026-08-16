@@ -1,4 +1,4 @@
-const CACHE_NAME = 'g4mg-adamz-v1';
+const CACHE_NAME = 'g4mg-adamz-v2';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -8,10 +8,10 @@ const urlsToCache = [
 ];
 
 self.addEventListener('install', event => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('Opened cache');
         return cache.addAll(urlsToCache);
       })
   );
@@ -26,32 +26,27 @@ self.addEventListener('fetch', event => {
     return;
   }
 
+  // Network First, fallback to cache strategy
   event.respondWith(
-    caches.match(event.request)
+    fetch(event.request)
       .then(response => {
-        // Cache hit - return response
-        if (response) {
+        // Check if we received a valid response
+        if(!response || response.status !== 200 || response.type !== 'basic') {
           return response;
         }
-        
-        return fetch(event.request).then(
-          function(response) {
-            // Check if we received a valid response
-            if(!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
 
-            // Clone the response
-            var responseToCache = response.clone();
+        // Clone and cache the new response
+        var responseToCache = response.clone();
+        caches.open(CACHE_NAME)
+          .then(cache => {
+            cache.put(event.request, responseToCache);
+          });
 
-            caches.open(CACHE_NAME)
-              .then(function(cache) {
-                cache.put(event.request, responseToCache);
-              });
-
-            return response;
-          }
-        );
+        return response;
+      })
+      .catch(() => {
+        // If network fails, return from cache
+        return caches.match(event.request);
       })
   );
 });
