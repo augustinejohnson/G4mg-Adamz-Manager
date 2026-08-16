@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /manifest.webmanifest
+Allow: /pwa-192x192.png
+Allow: /pwa-512x512.png
+
+# Prevent indexing of internal parameters or hashes if desired, but SPA routing usually happens on the client.
+# Disallow: /*?org=*
+
+Sitemap: https://recloud-erp.web.app/sitemap.xml
