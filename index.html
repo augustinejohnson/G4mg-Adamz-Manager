@@ -286,7 +286,7 @@
             </div>
 
             <!-- Product Grid -->
-            <div id="public-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div id="public-products-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 <!-- Products will be dynamically injected here -->
             </div>
         </section>
@@ -933,7 +933,7 @@
                     </select>
                 </div>
             </div>
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+            <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"></div>
         </section>
 
         <section id="stock-section" class="hide">
@@ -3344,18 +3344,18 @@
                 this.state.products.forEach(p => {
                     const imgUrl = p.image || 'https://via.placeholder.com/300x300?text=No+Image';
                     grid.innerHTML += `
-                        <div class="relative bg-white rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col group">
-                            <img src="${imgUrl}" class="h-32 object-contain mb-4 rounded" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-                            <h3 class="font-bold text-lg leading-tight uppercase">${p.name}</h3>
-                            ${p.genericName ? `<p class="text-gray-500 text-xs mb-2">${p.genericName}</p>` : `<p class="text-gray-500 text-xs mb-2 h-8 overflow-hidden">${p.desc}</p>`}
+                        <div class="relative bg-white rounded-lg shadow hover:shadow-lg transition p-3 sm:p-4 flex flex-col group">
+                            <img src="${imgUrl}" class="h-24 sm:h-32 object-contain mb-3 sm:mb-4 rounded" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+                            <h3 class="font-bold text-sm sm:text-lg leading-tight uppercase">${p.name}</h3>
+                            ${p.genericName ? `<p class="text-gray-500 text-[10px] sm:text-xs mb-2">${p.genericName}</p>` : `<p class="text-gray-500 text-[10px] sm:text-xs mb-2 h-6 sm:h-8 overflow-hidden">${p.desc}</p>`}
                             
                             <div class="mt-auto pt-2">
-                                <button onclick="app.togglePublicProductDesc('${p.id}')" class="w-full text-left py-2 text-sm font-bold text-medical-600 hover:text-medical-800 flex justify-between items-center transition outline-none">
+                                <button onclick="app.togglePublicProductDesc('${p.id}')" class="w-full text-left py-1 sm:py-2 text-xs sm:text-sm font-bold text-medical-600 hover:text-medical-800 flex justify-between items-center transition outline-none">
                                     <span>View Details</span>
                                     <i id="public-icon-${p.id}" class="fas fa-chevron-down transition-transform"></i>
                                 </button>
                                 
-                                <div id="public-desc-${p.id}" class="hidden mt-2 text-xs text-gray-600 bg-gray-50 p-3 rounded border border-gray-200">
+                                <div id="public-desc-${p.id}" class="hidden mt-2 text-[10px] sm:text-xs text-gray-600 bg-gray-50 p-2 sm:p-3 rounded border border-gray-200">
                                     ${p.desc ? p.desc.replace(/\n/g, '<br>') : 'No detailed description available for this item.'}
                                 </div>
                             </div>
@@ -3450,11 +3450,11 @@
                         }
 
                         html += `
-                            <div class="relative bg-white rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col group">
+                            <div class="relative bg-white rounded-lg shadow hover:shadow-lg transition p-3 sm:p-4 flex flex-col group">
                                 ${adminActions}
-                                <img src="${p.image}" class="h-32 object-contain mb-4 rounded">
-                                <h3 class="font-bold text-lg leading-tight uppercase">${p.name}</h3>
-                                ${p.genericName ? `<p class="text-gray-500 text-xs mb-2 h-8 overflow-hidden">${p.genericName}</p>` : `<p class="text-gray-500 text-xs mb-2 h-8 overflow-hidden">${p.desc}</p>`}
+                                <img src="${p.image}" class="h-24 sm:h-32 object-contain mb-3 sm:mb-4 rounded">
+                                <h3 class="font-bold text-sm sm:text-lg leading-tight uppercase">${p.name}</h3>
+                                ${p.genericName ? `<p class="text-gray-500 text-[10px] sm:text-xs mb-2 h-6 sm:h-8 overflow-hidden">${p.genericName}</p>` : `<p class="text-gray-500 text-[10px] sm:text-xs mb-2 h-6 sm:h-8 overflow-hidden">${p.desc}</p>`}
                                 <div class="flex justify-between items-center mb-2 mt-auto">
                                     <span class="font-bold text-primary-800">₦${currentPrice.toLocaleString()}</span>
                                     ${stockDisplay}
