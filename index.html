@@ -189,15 +189,15 @@
     <nav class="bg-gradient-to-r from-primary-900 to-primary-800 text-white shadow-lg sticky top-0 z-50">
         <!-- TOP: Logo & User Actions -->
         <div class="container mx-auto px-4 py-3 flex justify-between items-center border-b border-white/10">
-            <div class="flex items-center gap-3 shrink-0">
-                <button onclick="app.toggleMobileMenu()" class="md:hidden text-white text-xl focus:outline-none">
+            <div class="flex items-center gap-2 md:gap-3 shrink-0 overflow-hidden">
+                <button id="hamburger-btn" onclick="app.toggleMobileMenu()" class="hidden md:hidden text-white text-xl focus:outline-none">
                     <i class="fas fa-bars"></i>
                 </button>
                 <img id="nav-logo" src="https://via.placeholder.com/100x100?text=Logo" alt="Logo"
-                    class="h-10 w-10 rounded-full border-2 border-white bg-white object-contain p-0.5 shadow-sm">
-                <div>
-                    <h1 class="font-bold text-lg leading-tight tracking-tight">G4mg - Adamz Pharmacy</h1>
-                    <p class="text-[10px] text-blue-200 uppercase tracking-widest font-semibold">Ron Cloud System <span
+                    class="h-8 w-8 md:h-10 md:w-10 rounded-full border-2 border-white bg-white object-contain p-0.5 shadow-sm shrink-0">
+                <div class="overflow-hidden">
+                    <h1 class="font-bold text-xs md:text-lg leading-tight tracking-tight whitespace-nowrap overflow-hidden text-ellipsis">G4mg - Adamz Pharmacy</h1>
+                    <p class="text-[9px] md:text-[10px] text-blue-200 uppercase tracking-widest font-semibold whitespace-nowrap">Ron Cloud System <span
                             id="connection-status"
                             class="bg-green-400 h-1.5 w-1.5 rounded-full inline-block ml-1 shadow-[0_0_8px_rgba(74,222,128,0.8)]"></span>
                     </p>
@@ -205,24 +205,24 @@
             </div>
 
             <!-- ACTIONS (Right) -->
-            <div class="flex items-center gap-3 md:gap-5 shrink-0">
+            <div class="flex items-center gap-2 md:gap-5 shrink-0">
                 <a href="https://wa.me/2348063004747" target="_blank" rel="noopener noreferrer"
-                    class="bg-green-500 hover:bg-green-600 text-white p-2 rounded-full shadow-lg transition-transform hover:scale-110 flex items-center justify-center h-8 w-8"
+                    class="bg-green-500 hover:bg-green-600 text-white p-1.5 md:p-2 rounded-full shadow-lg transition-transform hover:scale-110 flex items-center justify-center h-7 w-7 md:h-8 md:w-8"
                     title="Chat on WhatsApp">
-                    <i class="fab fa-whatsapp text-lg"></i>
+                    <i class="fab fa-whatsapp text-sm md:text-lg"></i>
                 </a>
                 <button onclick="app.toggleLandingPage(true)"
                     class="hidden md:block bg-amber-400/20 border border-amber-400/50 text-amber-300 px-3 py-1 rounded-full text-xs font-bold hover:bg-amber-400/30 transition shadow-sm">
                     <i class="fas fa-crown mr-1"></i> Premium
                 </button>
                 <button onclick="app.toggleCart()" class="relative hover:text-accent-500 transition duration-300">
-                    <i class="fas fa-shopping-cart text-lg"></i>
+                    <i class="fas fa-shopping-cart text-base md:text-lg"></i>
                     <span id="cart-count"
-                        class="absolute -top-2 -right-2 bg-accent-500 text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center shadow-sm">0</span>
+                        class="absolute -top-2 -right-2 bg-accent-500 text-white text-[9px] md:text-[10px] font-bold rounded-full h-3 w-3 md:h-4 md:w-4 flex items-center justify-center shadow-sm">0</span>
                 </button>
-                <div id="user-info" class="text-xs font-semibold hidden sm:block text-blue-200"></div>
-                <button onclick="app.logout()" id="logout-btn"
-                    class="hidden bg-white/10 hover:bg-white/20 border border-white/20 px-4 py-1.5 rounded text-xs font-bold transition">Logout</button>
+                <div id="user-info" style="display: none;" class="text-[9px] md:text-xs font-semibold text-blue-200 max-w-[60px] md:max-w-none truncate"></div>
+                <button onclick="app.logout()" id="logout-btn" style="display: none;"
+                    class="bg-white/10 hover:bg-white/20 border border-white/20 px-2 py-1 md:px-4 md:py-1.5 rounded text-[9px] md:text-xs font-bold transition whitespace-nowrap">Logout</button>
             </div>
         </div>
 
@@ -2150,47 +2150,49 @@
                 const navLinks = document.getElementById('nav-links');
                 const logoutBtn = document.getElementById('logout-btn');
                 const userInfo = document.getElementById('user-info');
+                const hamburger = document.getElementById('hamburger-btn');
                 
-                let linksHtml = '';
+                let desktopHtml = '';
+                let mobileHtml = '';
                 
                 if (this.state.currentUser) {
                     const role = this.state.currentUser.role;
                     if (userInfo) {
                         userInfo.innerText = `${this.state.currentUser.email} (${role.toUpperCase()})`;
-                        userInfo.classList.remove('hidden');
+                        userInfo.style.display = 'block';
                     }
-                    if (logoutBtn) logoutBtn.classList.remove('hidden');
+                    if (logoutBtn) logoutBtn.style.display = 'block';
+                    if (hamburger) hamburger.classList.remove('hidden');
                     
+                    const sections = [];
                     if (role === 'admin') {
-                        linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('dashboard-section')" class="hover:text-blue-200">Dashboard</a>`;
-                        linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('financial-section')" class="hover:text-blue-200 text-yellow-300 font-bold"><i class="fas fa-chart-line mr-1"></i>Financials</a>`;
-                        linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('stock-section')" class="hover:text-blue-200">Inventory</a>`;
-                        linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('orders-section')" class="hover:text-blue-200">Orders</a>`;
-                        linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('settings-section')" class="hover:text-blue-200">Settings</a>`;
+                        sections.push({ id: 'dashboard-section', label: 'Dashboard' });
+                        sections.push({ id: 'financial-section', label: '<i class="fas fa-chart-line mr-1"></i>Financials', extra: 'text-yellow-300 font-bold' });
+                        sections.push({ id: 'stock-section', label: 'Inventory' });
+                        sections.push({ id: 'orders-section', label: 'Orders' });
+                        sections.push({ id: 'settings-section', label: 'Settings' });
                     }
-                    linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('products-section')" class="hover:text-blue-200">Shop</a>`;
-                    linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('about-section')" class="hover:text-blue-200">About</a>`;
+                    sections.push({ id: 'products-section', label: 'Shop' });
+                    sections.push({ id: 'about-section', label: 'About' });
+
+                    sections.forEach(s => {
+                        const ex = s.extra || '';
+                        desktopHtml += `<a href="#" onclick="app.showSection('${s.id}')" class="px-4 py-3 text-white/80 hover:text-white border-b-2 border-transparent hover:border-white transition duration-200 block ${ex}">${s.label}</a>`;
+                        mobileHtml += `<a href="#" onclick="app.toggleMobileMenu(true); app.showSection('${s.id}')" class="block py-2 px-4 hover:bg-white/10 rounded transition hover:text-blue-200 ${ex}">${s.label}</a>`;
+                    });
                 } else {
-                    if (userInfo) userInfo.classList.add('hidden');
-                    if (logoutBtn) logoutBtn.classList.add('hidden');
-                    
-                    linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('public-catalog-section')" class="hover:text-blue-200">Home</a>`;
-                    linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('auth-section')" class="hover:text-blue-200">Login / Sign Up</a>`;
+                    if (userInfo) userInfo.style.display = 'none';
+                    if (logoutBtn) logoutBtn.style.display = 'none';
+                    if (hamburger) hamburger.classList.add('hidden');
                 }
 
-                // Populate Desktop Center Nav
                 if (navLinks) {
-                    // Use Tab styling: Text with border-bottom indicator on hover
-                    const desktopLinks = linksHtml.replace(/class="/g, 'class="px-4 py-3 text-white/80 hover:text-white border-b-2 border-transparent hover:border-white transition duration-200 block ');
-                    navLinks.innerHTML = desktopLinks;
+                    navLinks.innerHTML = desktopHtml;
                 }
 
-                // Populate Mobile Menu
                 const mobileMenu = document.getElementById('mobile-menu');
                 if (mobileMenu) {
-                    // Use block styling for mobile
-                    const mobileLinks = linksHtml.replace(/class="/g, 'class="block py-2 px-4 hover:bg-white/10 rounded transition ');
-                    mobileMenu.innerHTML = mobileLinks;
+                    mobileMenu.innerHTML = mobileHtml;
                 }
             },
 
