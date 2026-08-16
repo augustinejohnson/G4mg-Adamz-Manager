@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice - G4MG-ADAMZ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        @media print {
+            @page { size: A4; margin: 15mm; }
+            html { font-size: 80%; }
+            body { background-color: #ffffff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .no-print { display: none !important; }
+            .print-shadow-none { box-shadow: none !important; border: none !important; margin: 0 !important; padding: 0 !important; }
+            h2, h3 { page-break-after: avoid; break-after: avoid; }
+            table, tr, td, th { page-break-inside: avoid; break-inside: avoid; }
+            .avoid-break { page-break-inside: avoid; break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased p-4 md:p-10">
+
+    <div class="max-w-5xl mx-auto">
+        <!-- Print Button -->
+        <div class="flex justify-end mb-6 no-print">
+            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg shadow-md font-medium transition flex items-center gap-2">
+                <i class="fas fa-print"></i> Save as PDF / Print
+            </button>
+        </div>
+
+        <!-- Invoice Container -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden print-shadow-none">
+            
+            <!-- Header -->
+            <div class="bg-blue-900 text-white p-10 md:p-12 relative overflow-hidden">
+                <div class="absolute top-0 right-0 opacity-10">
+                    <i class="fas fa-file-invoice text-[15rem] transform rotate-12 -mt-10 -mr-10"></i>
+                </div>
+                <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                    <div>
+                        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-2">Project Invoice</h1>
+                        <p class="text-blue-200 text-lg">Public Landing Page & Catalog Integration</p>
+                    </div>
+                    <div class="text-left md:text-right">
+                        <p class="text-sm text-blue-200 uppercase tracking-widest font-bold mb-1">Date Issued</p>
+                        <p class="text-xl font-semibold">August 2026</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-10 md:p-12">
+                
+                <!-- Billing Info -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12 border-b border-gray-100 pb-12">
+                    <div>
+                        <h3 class="text-sm uppercase tracking-wider text-gray-400 font-bold mb-3">Prepared For</h3>
+                        <p class="text-2xl font-bold text-gray-900 mb-1">G4MG-ADAMZ Pharmacy</p>
+                        <p class="text-gray-500 font-medium">and Stores Ltd.</p>
+                        <p class="text-gray-500 mt-2"><i class="fas fa-globe text-blue-500 mr-2"></i> g4mg-adamzpharmacy.com</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm uppercase tracking-wider text-gray-400 font-bold mb-3">Project Scope</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Design, development, and live deployment of a custom public-facing landing page, dynamic database synchronization, data masking security protocols, and advanced responsive UI/UX architecture.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Cost Breakdown Table -->
+                <div class="mb-14">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                        <i class="fas fa-wallet text-blue-600"></i> Cost of Production
+                    </h2>
+                    
+                    <div class="overflow-x-auto rounded-xl border border-gray-200">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50">
+                                    <th class="py-4 px-6 font-bold text-gray-600 uppercase text-xs tracking-wider border-b border-gray-200">Production Component</th>
+                                    <th class="py-4 px-6 font-bold text-gray-600 uppercase text-xs tracking-wider border-b border-gray-200 text-right w-48">Cost (₦)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="py-4 px-6">
+                                        <p class="font-bold text-gray-900">UI/UX Design & Responsive Layout</p>
+                                        <p class="text-sm text-gray-500 mt-1">Hero branding, About section, Grid architecture, Mobile optimization</p>
+                                    </td>
+                                    <td class="py-4 px-6 text-right font-medium text-gray-900">50,000</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="py-4 px-6">
+                                        <p class="font-bold text-gray-900">Frontend Engineering & Database Integration</p>
+                                        <p class="text-sm text-gray-500 mt-1">Live Firestore syncing, Generic name implementation, Interactive dropdowns</p>
+                                    </td>
+                                    <td class="py-4 px-6 text-right font-medium text-gray-900">50,000</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="py-4 px-6">
+                                        <p class="font-bold text-gray-900">Data Security & Custom Routing Logic</p>
+                                        <p class="text-sm text-gray-500 mt-1">Data masking of wholesale/staff prices, unauthenticated routing protocols</p>
+                                    </td>
+                                    <td class="py-4 px-6 text-right font-medium text-gray-900">20,000</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="bg-blue-50">
+                                    <td class="py-5 px-6 text-right font-bold text-blue-900 text-lg">Total Cost of Production</td>
+                                    <td class="py-5 px-6 text-right font-extrabold text-blue-700 text-2xl">₦120,000</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Detailed Scope of Work -->
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6 border-b pb-3 border-gray-100">Detailed Scope of Work</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Box 1 -->
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 avoid-break">
+                            <h3 class="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">
+                                <i class="fas fa-server text-blue-500"></i> Architecture & Data
+                            </h3>
+                            <ul class="space-y-3 text-sm text-gray-600">
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span><strong>Public Routing:</strong> Secured access for unauthenticated visitors.</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span><strong>Live Syncing:</strong> Real-time pipeline to Firestore database.</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span><strong>Data Masking:</strong> Strict security stripping internal wholesale/staff prices and stock logic.</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Box 2 -->
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 avoid-break">
+                            <h3 class="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">
+                                <i class="fas fa-paint-brush text-blue-500"></i> UI/UX Design
+                            </h3>
+                            <ul class="space-y-3 text-sm text-gray-600">
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span><strong>Branding:</strong> Custom blue "Welcome" hero banner and taglines.</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span><strong>High-Density Grid:</strong> Fluid grid scaling up to 6 columns for large catalogs.</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span><strong>Product Cards:</strong> Minimalist design with "Generic Name" support.</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Box 3 -->
+                        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 md:col-span-2 avoid-break">
+                            <h3 class="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">
+                                <i class="fas fa-rocket text-blue-500"></i> Optimization & Deployment
+                            </h3>
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-gray-600">
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span><strong>Mobile Responsiveness:</strong> 100% fluid layouts for phones/tablets.</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span><strong>WhatsApp Integration:</strong> Instant customer conversion buttons.</span></li>
+                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span><strong>Live Deployment:</strong> Version controlled and hosted on Firebase CDN.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="mt-16 pt-8 border-t border-gray-100 text-center text-gray-400 text-sm">
+                    <p>Thank you for your business.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -5,23 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>G4mg - Adamz Pharmacy & Stores Ltd</title>
-    <meta name="description" content="G4mg - Adamz Pharmacy & Stores Ltd. Contact us on WhatsApp: +2348063004747">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Pharmacy",
-      "name": "G4mg - Adamz Pharmacy & Stores Ltd",
-      "telephone": "+2348063004747",
-      "url": "https://g4mg-adamzpharmacy.com",
-      "description": "Fully Mobile Optimized Advanced Analytics Pharmacy System.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Road",
-        "addressLocality": "Oghara",
-        "addressRegion": "Delta State"
-      }
-    }
-    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -196,11 +179,6 @@
 
             <!-- ACTIONS (Right) -->
             <div class="flex items-center gap-3 md:gap-5 shrink-0">
-                <a href="https://wa.me/2348063004747" target="_blank" rel="noopener noreferrer"
-                    class="bg-green-500 hover:bg-green-600 text-white p-2 rounded-full shadow-lg transition-transform hover:scale-110 flex items-center justify-center h-8 w-8"
-                    title="Chat on WhatsApp">
-                    <i class="fab fa-whatsapp text-lg"></i>
-                </a>
                 <button onclick="app.toggleLandingPage(true)"
                     class="hidden md:block bg-amber-400/20 border border-amber-400/50 text-amber-300 px-3 py-1 rounded-full text-xs font-bold hover:bg-amber-400/30 transition shadow-sm">
                     <i class="fas fa-crown mr-1"></i> Premium
@@ -232,60 +210,9 @@
     </nav>
 
     <main class="container mx-auto px-4 py-8 flex-grow">
-        <!-- PUBLIC CATALOG SECTION (Landing Page) -->
-        <section id="public-catalog-section" class="hide mb-12">
-            <div class="w-full bg-primary-800 rounded-2xl p-6 md:p-8 text-center text-white shadow-xl mb-10 relative overflow-hidden">
-                <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-                <h1 class="text-2xl md:text-3xl font-extrabold mb-3 relative z-10">Welcome to G4mg - Adamz Pharmacy and Stores Ltd</h1>
-                <p class="text-sm md:text-base text-primary-100 mb-5 relative z-10 max-w-xl mx-auto">Making Access to Quality Healthcare Products Possible.</p>
-                
-                <div class="flex justify-center items-center gap-3 relative z-10">
-                    <a href="https://wa.me/2348063004747" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 rounded-full font-bold shadow transition flex items-center text-xs">
-                        <i class="fab fa-whatsapp text-sm mr-1.5"></i> +2348063004747
-                    </a>
-                    <button onclick="app.showSection('auth-section')" class="bg-white text-primary-800 hover:bg-gray-50 px-4 py-1.5 rounded-full font-bold shadow transition border border-white text-xs">
-                        <i class="fas fa-user-circle mr-1.5"></i> Login / Sign Up
-                    </button>
-                </div>
-            </div>
-
-            <!-- Introductory Card -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8 mb-10 text-gray-700 leading-relaxed text-sm md:text-base">
-                <p class="mb-4">
-                    <strong class="text-primary-800">G4MG-ADAMZ Pharmacy and Stores Ltd</strong> is a Nigerian pharmaceutical company dedicated to improving healthcare access through the reliable distribution and supply of safe, affordable, high-quality, and efficacious medicines. 
-                    We serve healthcare institutions, pharmacies, clinics, healthcare professionals, and patients by ensuring consistent availability of essential medicines and healthcare solutions across Nigeria.
-                </p>
-                
-                <div class="bg-gray-50/80 p-5 rounded-xl border border-gray-100 mb-4">
-                    <h3 class="font-bold text-gray-800 mb-3 text-base">Our product portfolio includes:</h3>
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 list-none">
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs"></i><span>Antidiabetic medications</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs"></i><span>Antihypertensives</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs"></i><span>Anti-infectives</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs"></i><span>Eye and ear drops</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs"></i><span>Anaesthetic products</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs"></i><span>Fertility medications</span></li>
-                        <li class="flex items-start sm:col-span-2"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs"></i><span>And other specialty healthcare products</span></li>
-                    </ul>
-                </div>
-
-                <p>
-                    Through a dependable distribution network and an unwavering commitment to quality, we make essential healthcare products readily accessible nationwide. 
-                    Guided by integrity, professionalism, and a strong focus on customer satisfaction, <strong class="text-primary-800">G4MG-ADAMZ Pharmacy and Stores Ltd</strong> works to enhance patient outcomes and support effective healthcare delivery. Our mission is to make unique, high-quality healthcare products accessible — contributing to healthier communities and an improved quality of life.
-                </p>
-            </div>
-
-            <!-- Product Grid -->
-            <div id="public-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Products will be dynamically injected here -->
-            </div>
-        </section>
 
         <section id="auth-section"
-            class="hide max-w-md mx-auto bg-white p-8 rounded-xl shadow-xl mt-10 border border-gray-100 relative">
-            <button type="button" onclick="app.showSection('public-catalog-section')" class="absolute top-6 left-6 text-gray-400 hover:text-primary-800 transition flex items-center gap-2 font-medium">
-                <i class="fas fa-arrow-left text-lg"></i>
-            </button>
+            class="max-w-md mx-auto bg-white p-8 rounded-xl shadow-xl mt-10 border border-gray-100">
             <div class="text-center mb-8">
                 <img id="login-logo" src="https://via.placeholder.com/100x100?text=Logo"
                     class="h-24 w-24 mx-auto mb-4 rounded-full shadow-md object-contain border p-1">
@@ -353,14 +280,6 @@
                     <a href="#" onclick="app.toggleLandingPage(true)"
                         class="text-xs text-indigo-600 font-bold hover:underline">
                         Go to Premium / Enterprise Login
-                    </a>
-                </div>
-
-                <!-- NEW: WhatsApp Contact -->
-                <div class="text-center pt-4 border-t mt-4 border-gray-100">
-                    <a href="https://wa.me/2348063004747" target="_blank" rel="noopener noreferrer"
-                        class="inline-flex items-center gap-2 px-4 py-2 bg-green-50 text-green-600 rounded-full text-sm font-bold hover:bg-green-100 transition shadow-sm border border-green-200">
-                        <i class="fab fa-whatsapp text-lg"></i> Need Help? Chat with Admin
                     </a>
                 </div>
             </form>
@@ -910,9 +829,6 @@
                     <button id="btn-add-product" onclick="app.openAddProductModal()"
                         class="hidden bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-700 font-bold"><i
                             class="fas fa-plus mr-2"></i> Add</button>
-                    <button id="btn-generate-sitemap" onclick="app.generateSitemap()"
-                        class="hidden bg-purple-600 text-white px-4 py-2 rounded shadow hover:bg-purple-700 font-bold" title="Generate SEO Sitemap"><i
-                            class="fas fa-sitemap mr-2"></i> SEO</button>
                     <input type="text" id="product-search" placeholder="Search medicines..."
                         class="border p-2 rounded w-full md:w-64" oninput="app.renderProducts()">
                     <select id="category-filter" class="border p-2 rounded" onchange="app.renderProducts()">
@@ -1231,34 +1147,15 @@
             </div>
         </section>
 
-        <div id="edit-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center z-[60]">
-            <div class="bg-white p-6 rounded shadow-lg w-full max-w-md mx-4 max-h-[90vh] flex flex-col">
-                <h3 class="text-xl font-bold mb-1">Modify Order</h3>
-                <p class="text-sm text-gray-500 mb-4 pb-2 border-b">Admin Override: Adjust qty, delete, or add products.</p>
-                
-                <!-- Scrollable Item List -->
-                <div id="modal-items-list" class="space-y-3 mb-4 overflow-y-auto flex-grow pr-2"></div>
-                
-                <!-- Add New Product Section -->
-                <div class="bg-gray-50 p-3 rounded-lg border border-gray-200 mb-4">
-                    <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fas fa-plus-circle text-green-600 mr-1"></i> Add Product to Order</label>
-                    <div class="flex flex-col gap-2">
-                        <select id="edit-add-product-select" class="w-full border rounded p-2 text-sm focus:ring-primary-800 outline-none">
-                            <option value="">Select a product...</option>
-                        </select>
-                        <div class="flex gap-2">
-                            <input type="number" id="edit-add-product-qty" value="1" min="1" class="w-20 border rounded p-2 text-sm text-center focus:ring-primary-800 outline-none" placeholder="Qty">
-                            <button onclick="app.addEditOrderProduct()" class="flex-grow bg-green-100 hover:bg-green-200 text-green-800 border border-green-300 rounded px-3 py-2 text-sm font-bold transition">
-                                Add to Order
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex justify-end gap-2 border-t pt-4 shrink-0">
+        <div id="edit-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center z-50">
+            <div class="bg-white p-6 rounded shadow-lg w-full max-w-sm mx-4 max-h-[90vh] overflow-y-auto">
+                <h3 class="text-xl font-bold mb-4">Edit Order Quantity</h3>
+                <p class="text-sm text-gray-500 mb-2">Admin Override</p>
+                <div id="modal-items-list" class="space-y-4 mb-4"></div>
+                <div class="flex justify-end gap-2 border-t pt-4">
                     <button onclick="document.getElementById('edit-modal').classList.add('hidden')"
-                        class="px-5 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold rounded transition">Cancel</button>
-                    <button onclick="app.saveOrderEdits()" class="px-5 py-2 bg-primary-800 hover:bg-primary-900 text-white font-bold rounded shadow transition">Save
+                        class="px-4 py-2 bg-gray-300 rounded">Cancel</button>
+                    <button onclick="app.saveOrderEdits()" class="px-4 py-2 bg-primary-800 text-white rounded">Save
                         Changes</button>
                 </div>
             </div>
@@ -1290,13 +1187,8 @@
             <div class="space-y-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Product Name *</label>
-                    <input type="text" id="new-prod-name" placeholder="e.g. LABET -50 INJECTION"
+                    <input type="text" id="new-prod-name" placeholder="e.g. Paracetamol 500mg"
                         class="w-full border p-2 rounded outline-none focus:ring-2 focus:ring-green-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Generic Name</label>
-                    <input type="text" id="new-prod-generic" placeholder="e.g. Labetalol Hydrochloride 5mg/ml x 10ml"
-                        class="w-full border p-2 rounded outline-none focus:ring-2 focus:ring-green-500 text-sm text-gray-600">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
@@ -1733,10 +1625,8 @@
                     } else {
                         console.log("Auth State: Signed Out");
                         this.state.currentUser = null;
-                        this.showSection('public-catalog-section');
-                        // Hide navbar elements that require auth
-                        const authOnlyEls = document.querySelectorAll('.auth-only');
-                        authOnlyEls.forEach(el => el.classList.add('hidden')); 
+                        document.getElementById('auth-section').classList.remove('hide');
+                        // Show landing page if desired, or stay on auth. 
                     }
                 });
 
@@ -1837,7 +1727,6 @@
                 const active = document.querySelector('main > section:not(.hide)');
                 if (active) {
                     const id = active.id;
-                    if (id === 'public-catalog-section') this.renderPublicCatalog();
                     if (id === 'products-section') this.renderProducts();
                     if (id === 'stock-section') this.renderStock();
                     if (id === 'orders-section') this.renderOrders();
@@ -3309,92 +3198,6 @@
                 if (mobileList) mobileList.innerHTML = mobileHtml;
             },
 
-            togglePublicProductDesc: function(id) {
-                const descEl = document.getElementById(`public-desc-${id}`);
-                const iconEl = document.getElementById(`public-icon-${id}`);
-                if (descEl.classList.contains('hidden')) {
-                    descEl.classList.remove('hidden');
-                    iconEl.classList.replace('fa-chevron-down', 'fa-chevron-up');
-                } else {
-                    descEl.classList.add('hidden');
-                    iconEl.classList.replace('fa-chevron-up', 'fa-chevron-down');
-                }
-            },
-
-            renderPublicCatalog: function () {
-                const grid = document.getElementById('public-products-grid');
-                if (!grid) return;
-                grid.innerHTML = '';
-                
-                if (this.state.products.length === 0) {
-                    grid.innerHTML = '<div class="col-span-full text-center py-10 text-gray-400">Loading catalog...</div>';
-                    return;
-                }
-
-                this.state.products.forEach(p => {
-                    const imgUrl = p.image || 'https://via.placeholder.com/300x300?text=No+Image';
-                    grid.innerHTML += `
-                        <div class="relative bg-white rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col group">
-                            <img src="${imgUrl}" class="h-32 object-contain mb-4 rounded" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-                            <h3 class="font-bold text-lg leading-tight uppercase">${p.name}</h3>
-                            ${p.genericName ? `<p class="text-gray-500 text-xs mb-2">${p.genericName}</p>` : `<p class="text-gray-500 text-xs mb-2 h-8 overflow-hidden">${p.desc}</p>`}
-                            
-                            <div class="mt-auto pt-2">
-                                <button onclick="app.togglePublicProductDesc('${p.id}')" class="w-full text-left py-2 text-sm font-bold text-medical-600 hover:text-medical-800 flex justify-between items-center transition outline-none">
-                                    <span>View Details</span>
-                                    <i id="public-icon-${p.id}" class="fas fa-chevron-down transition-transform"></i>
-                                </button>
-                                
-                                <div id="public-desc-${p.id}" class="hidden mt-2 text-xs text-gray-600 bg-gray-50 p-3 rounded border border-gray-200">
-                                    ${p.desc ? p.desc.replace(/\n/g, '<br>') : 'No detailed description available for this item.'}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    `;
-                });
-
-                // Inject SEO JSON-LD
-                let schemaScript = document.getElementById('seo-schema');
-                if (!schemaScript) {
-                    schemaScript = document.createElement('script');
-                    schemaScript.id = 'seo-schema';
-                    schemaScript.type = 'application/ld+json';
-                    document.head.appendChild(schemaScript);
-                }
-                const schema = {
-                    "@context": "https://schema.org/",
-                    "@type": "ItemList",
-                    "itemListElement": this.state.products.map((p, index) => ({
-                        "@type": "ListItem",
-                        "position": index + 1,
-                        "item": {
-                            "@type": "Product",
-                            "name": p.name,
-                            "description": p.desc || p.genericName || "Pharmaceutical product",
-                            "category": p.category || "Health",
-                            "image": p.image || "https://g4mg-adamzpharmacy.web.app/logo.png",
-                            "url": `https://g4mg-adamzpharmacy.web.app/?product=${p.id}`
-                        }
-                    }))
-                };
-                schemaScript.text = JSON.stringify(schema);
-
-                // Handle Deep Linking
-                const urlParams = new URLSearchParams(window.location.search);
-                const deepLinkProductId = urlParams.get('product');
-                if (deepLinkProductId && !this._deepLinkTriggered) {
-                    this._deepLinkTriggered = true;
-                    setTimeout(() => {
-                        const icon = document.getElementById(`public-icon-${deepLinkProductId}`);
-                        if (icon) {
-                            this.togglePublicProductDesc(deepLinkProductId);
-                            icon.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }
-                    }, 500);
-                }
-            },
-
             renderProducts: function () {
                 const search = document.getElementById('product-search').value.toLowerCase();
                 const category = document.getElementById('category-filter').value;
@@ -3405,15 +3208,9 @@
 
                 // Show "Add Product" button if Admin
                 const btnAdd = document.getElementById('btn-add-product');
-                const btnSitemap = document.getElementById('btn-generate-sitemap');
                 if (btnAdd) {
-                    if (this.state.currentUser.role === 'admin') {
-                        btnAdd.classList.remove('hidden');
-                        if (btnSitemap) btnSitemap.classList.remove('hidden');
-                    } else {
-                        btnAdd.classList.add('hidden');
-                        if (btnSitemap) btnSitemap.classList.add('hidden');
-                    }
+                    if (this.state.currentUser.role === 'admin') btnAdd.classList.remove('hidden');
+                    else btnAdd.classList.add('hidden');
                 }
 
                 let html = '';
@@ -3444,8 +3241,8 @@
                             <div class="relative bg-white rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col group">
                                 ${adminActions}
                                 <img src="${p.image}" class="h-32 object-contain mb-4 rounded">
-                                <h3 class="font-bold text-lg leading-tight uppercase">${p.name}</h3>
-                                ${p.genericName ? `<p class="text-gray-500 text-xs mb-2 h-8 overflow-hidden">${p.genericName}</p>` : `<p class="text-gray-500 text-xs mb-2 h-8 overflow-hidden">${p.desc}</p>`}
+                                <h3 class="font-bold text-lg leading-tight">${p.name}</h3>
+                                <p class="text-gray-500 text-xs mb-2 h-8 overflow-hidden">${p.desc}</p>
                                 <div class="flex justify-between items-center mb-2 mt-auto">
                                     <span class="font-bold text-primary-800">₦${currentPrice.toLocaleString()}</span>
                                     ${stockDisplay}
@@ -3462,33 +3259,6 @@
                 if (this.state.currentUser && this.state.currentUser.role === 'wholesale') return product.priceWholesale;
                 return product.priceStaff;
             },
-
-            generateSitemap: function () {
-                let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
-                const baseUrl = 'https://g4mg-adamzpharmacy.web.app';
-                
-                // Add home page
-                xml += `  <url>\n    <loc>${baseUrl}/</loc>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n`;
-
-                // Add products
-                this.state.products.forEach(p => {
-                    xml += `  <url>\n    <loc>${baseUrl}/?product=${p.id}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
-                });
-                xml += '</urlset>';
-
-                // Trigger download
-                const blob = new Blob([xml], { type: 'application/xml' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'sitemap.xml';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-                alert('sitemap.xml successfully generated! Please place this file in your project folder (next to index.html) and deploy to Firebase.');
-            },
-
             populateClientFilter: function () {
                 // Populate Analytics Filter
                 const analyticsSelect = document.getElementById('analytics-client-filter');
@@ -4143,141 +3913,39 @@
 
             openEditModal: function (orderId) {
                 const order = this.state.orders.find(o => o.docId === orderId);
-                this.state.editingOrder = JSON.parse(JSON.stringify(order)); // Deep copy
-                
-                // Populate product dropdown
-                const select = document.getElementById('edit-add-product-select');
-                select.innerHTML = '<option value="">Select a product...</option>';
-                this.state.products.forEach(p => {
-                    select.innerHTML += `<option value="${p.id}">${p.name} - ${p.category}</option>`;
+                this.state.editingOrder = JSON.parse(JSON.stringify(order));
+                const container = document.getElementById('modal-items-list'); container.innerHTML = '';
+                this.state.editingOrder.items.forEach((item, index) => {
+                    container.innerHTML += `<div class="flex justify-between items-center bg-gray-50 p-3 rounded border"><div><div class="font-bold text-sm">${item.name}</div><div class="text-xs text-gray-500">Unit: ₦${item.price}</div></div><div class="flex items-center gap-2"><label class="text-xs font-bold">Qty:</label><input type="number" id="edit-qty-${index}" value="${item.qty}" min="0" class="w-20 border rounded p-1 text-center"></div></div>`;
                 });
-                
-                this.renderEditOrderItems();
                 document.getElementById('edit-modal').classList.remove('hidden');
             },
-            
-            renderEditOrderItems: function() {
-                const container = document.getElementById('modal-items-list'); 
-                container.innerHTML = '';
-                this.state.editingOrder.items.forEach((item, index) => {
-                    container.innerHTML += `
-                    <div class="flex flex-col gap-2 bg-gray-50 p-3 rounded-lg border border-gray-200">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <div class="font-bold text-sm text-gray-800">${item.name}</div>
-                                <div class="text-xs text-gray-500 font-medium">Unit Price: ₦${item.price}</div>
-                            </div>
-                            <button onclick="app.deleteEditOrderItem(${index})" class="text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-1.5 rounded transition" title="Delete from order">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                        <div class="flex justify-between items-center mt-1">
-                            <label class="text-xs font-bold text-gray-600">Quantity:</label>
-                            <input type="number" id="edit-qty-${index}" value="${item.qty}" min="1" onchange="app.state.editingOrder.items[${index}].qty = parseInt(this.value) || 1" class="w-20 border rounded p-1.5 text-center text-sm font-bold focus:ring-primary-800 outline-none">
-                        </div>
-                    </div>`;
-                });
-            },
-
-            deleteEditOrderItem: function(index) {
-                if(confirm("Remove this item from the order?")) {
-                    this.state.editingOrder.items.splice(index, 1);
-                    this.renderEditOrderItems();
-                }
-            },
-
-            addEditOrderProduct: function() {
-                const select = document.getElementById('edit-add-product-select');
-                const qtyInput = document.getElementById('edit-add-product-qty');
-                const prodId = select.value;
-                const qty = parseInt(qtyInput.value) || 1;
-                
-                if(!prodId) return alert("Please select a product first.");
-                
-                const product = this.state.products.find(p => p.id === prodId);
-                if(!product) return;
-
-                // Determine price based on customer role (default to retail if not wholesale)
-                // Need to fetch customer role from users collection or assume based on previous items if needed
-                // For safety, we check if the customer has "wholesale" role in our users list
-                let price = product.retailPrice;
-                const customerUser = this.state.users ? this.state.users.find(u => u.email === this.state.editingOrder.customer.email) : null;
-                if (customerUser && customerUser.role === 'wholesale') {
-                    price = product.wholesalePrice;
-                }
-
-                // Check if already in order
-                const existingIndex = this.state.editingOrder.items.findIndex(i => i.id === product.id);
-                if (existingIndex > -1) {
-                    this.state.editingOrder.items[existingIndex].qty += qty;
-                } else {
-                    this.state.editingOrder.items.push({
-                        id: product.id,
-                        name: product.name,
-                        qty: qty,
-                        price: price,
-                        category: product.category || 'General'
-                    });
-                }
-                
-                this.renderEditOrderItems();
-                
-                // Reset inputs
-                select.value = '';
-                qtyInput.value = '1';
-            },
-
             saveOrderEdits: function () {
                 const oldOrder = this.state.orders.find(o => o.docId === this.state.editingOrder.docId);
                 const batch = db.batch();
                 let newTotal = 0;
-                
-                // Track stock changes
-                const stockAdjustments = {}; // { docId: delta }
-
-                // 1. If order was already received, we need to completely refund old stock, then deduct new stock.
-                // Or we can just calculate the delta for each product.
-                if (oldOrder.isReceived) {
-                    // + Refund old items
-                    oldOrder.items.forEach(oldItem => {
-                        const prod = this.state.products.find(p => p.id === oldItem.id);
-                        if(prod) {
-                            stockAdjustments[prod.docId] = (stockAdjustments[prod.docId] || 0) + oldItem.qty;
+                this.state.editingOrder.items.forEach((item, index) => {
+                    const inputVal = document.getElementById(`edit-qty-${index}`).value;
+                    const newQty = parseInt(inputVal);
+                    const oldQty = oldOrder.items[index].qty;
+                    if (oldOrder.isReceived) {
+                        const diff = newQty - oldQty;
+                        if (diff !== 0) {
+                            const product = this.state.products.find(p => p.id === item.id);
+                            if (product) {
+                                const prodRef = db.collection('products').doc(product.docId);
+                                batch.update(prodRef, { stock: firebase.firestore.FieldValue.increment(-diff) });
+                            }
                         }
-                    });
-                    
-                    // - Deduct new items
-                    this.state.editingOrder.items.forEach(newItem => {
-                        const prod = this.state.products.find(p => p.id === newItem.id);
-                        if(prod) {
-                            stockAdjustments[prod.docId] = (stockAdjustments[prod.docId] || 0) - newItem.qty;
-                        }
-                    });
-                }
-
-                // 2. Calculate New Total
-                this.state.editingOrder.items.forEach(item => {
-                    newTotal += (item.price * item.qty);
-                });
-
-                // 3. Apply Stock Adjustments
-                Object.keys(stockAdjustments).forEach(docId => {
-                    const diff = stockAdjustments[docId];
-                    if (diff !== 0) {
-                        const prodRef = db.collection('products').doc(docId);
-                        batch.update(prodRef, { stock: firebase.firestore.FieldValue.increment(diff) });
                     }
+                    item.qty = newQty;
+                    newTotal += item.price * newQty;
                 });
-
                 const orderRef = db.collection('orders').doc(this.state.editingOrder.docId);
                 batch.update(orderRef, { items: this.state.editingOrder.items, total: newTotal });
-                
                 batch.commit().then(() => {
                     document.getElementById('edit-modal').classList.add('hidden');
-                    alert("Order successfully modified.");
-                }).catch(err => {
-                    console.error("Error saving edits:", err);
-                    alert("Failed to save changes.");
+                    alert("Order updated successfully.");
                 });
             },
             showLowStock: function () {
@@ -4336,7 +4004,6 @@
                 document.getElementById('edit-prod-id').value = '';
                 document.getElementById('product-modal-title').innerText = 'Add New Product';
                 document.getElementById('new-prod-name').value = '';
-                document.getElementById('new-prod-generic').value = '';
                 document.getElementById('new-prod-desc').value = '';
                 document.getElementById('new-prod-cat-custom').value = '';
                 document.getElementById('new-prod-price-staff').value = '';
@@ -4354,7 +4021,6 @@
                 document.getElementById('product-modal-title').innerText = 'Edit Product';
                 
                 document.getElementById('new-prod-name').value = product.name || '';
-                document.getElementById('new-prod-generic').value = product.genericName || '';
                 document.getElementById('new-prod-desc').value = product.desc || '';
                 
                 // Ensure dropdown has options populated
@@ -4377,7 +4043,6 @@
             saveNewProduct: function () {
                 const docId = document.getElementById('edit-prod-id').value;
                 const name = document.getElementById('new-prod-name').value;
-                const genericName = document.getElementById('new-prod-generic').value;
                 const desc = document.getElementById('new-prod-desc').value;
                 const catDropdown = document.getElementById('new-prod-cat').value;
                 const catCustom = document.getElementById('new-prod-cat-custom').value.trim();
@@ -4394,7 +4059,7 @@
                 if (docId) {
                     // Update existing product
                     db.collection('products').doc(docId).update({
-                        name, genericName, desc, category: cat,
+                        name, desc, category: cat,
                         priceStaff: pStaff, priceWholesale: pWhole,
                         stock, image: img
                     }).then(() => {
@@ -4408,7 +4073,7 @@
 
                     const newProd = {
                         id: newId,
-                        name, genericName, desc, category: cat,
+                        name, desc, category: cat,
                         priceStaff: pStaff, priceWholesale: pWhole,
                         stock, image: img,
                         batchNumber: '', expiryDate: ''
@@ -4490,8 +4155,7 @@
                         <td class="px-4 py-2.5 border text-xs text-gray-400 font-mono">${idx + 1}</td>
                         <td class="px-4 py-2.5 border">
                             <div class="font-semibold text-gray-800">${p.name}</div>
-                            ${p.genericName ? `<div class="text-[10px] text-gray-500 uppercase tracking-wide mt-0.5">${p.genericName}</div>` : ''}
-                            <div class="text-xs text-gray-400 mt-1">${p.desc || ''}</div>
+                            <div class="text-xs text-gray-400">${p.desc || ''}</div>
                         </td>
                         <td class="px-4 py-2.5 border text-center"><span class="px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">${p.category || 'General'}</span></td>
                         <td class="px-4 py-2.5 border text-center font-bold ${p.stock < 10 ? 'text-red-600' : p.stock < 50 ? 'text-yellow-600' : 'text-emerald-600'}" id="sr-current-${p.id}">${p.stock}</td>
