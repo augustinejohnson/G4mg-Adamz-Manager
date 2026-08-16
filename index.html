@@ -3338,16 +3338,16 @@
             renderPublicCatalog: function () {
                 const grid = document.getElementById('public-products-grid');
                 if (!grid) return;
-                grid.innerHTML = '';
                 
                 if (this.state.products.length === 0) {
                     grid.innerHTML = '<div class="col-span-full text-center py-10 text-gray-400">Loading catalog...</div>';
                     return;
                 }
 
+                let html = '';
                 this.state.products.forEach(p => {
                     const imgUrl = p.image || 'https://via.placeholder.com/300x300?text=No+Image';
-                    grid.innerHTML += `
+                    html += `
                         <div class="relative bg-white rounded-lg shadow hover:shadow-lg transition p-3 sm:p-4 flex flex-col group">
                             <img src="${imgUrl}" class="h-24 sm:h-32 object-contain mb-3 sm:mb-4 rounded" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
                             <h3 class="font-bold text-sm sm:text-lg leading-tight uppercase">${p.name}</h3>
@@ -3366,6 +3366,7 @@
                         </div>
                     `;
                 });
+                grid.innerHTML = html;
 
                 // Inject SEO JSON-LD
                 let schemaScript = document.getElementById('seo-schema');
