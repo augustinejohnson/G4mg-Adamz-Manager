@@ -1747,6 +1747,7 @@
                     } else {
                         console.log("Auth State: Signed Out");
                         this.state.currentUser = null;
+                        this.updateNav();
                         this.showSection('public-catalog-section');
                         // Hide navbar elements that require auth
                         const authOnlyEls = document.querySelectorAll('.auth-only');
@@ -2149,27 +2150,35 @@
                 const navLinks = document.getElementById('nav-links');
                 const logoutBtn = document.getElementById('logout-btn');
                 const userInfo = document.getElementById('user-info');
-                const role = this.state.currentUser.role;
-                userInfo.innerText = `${this.state.currentUser.email} (${role.toUpperCase()})`;
-                logoutBtn.classList.remove('hidden');
+                
                 let linksHtml = '';
-                if (role === 'admin') {
-                    linksHtml += `<a href="#" onclick="app.showSection('dashboard-section')" class="hover:text-blue-200">Dashboard</a>`;
-                    // Always show Financials for Admin to allow the "Premium Gate" alert to trigger if in standard mode
-                    linksHtml += `<a href="#" onclick="app.showSection('financial-section')" class="hover:text-blue-200 text-yellow-300 font-bold"><i class="fas fa-chart-line mr-1"></i>Financials</a>`;
-                    linksHtml += `<a href="#" onclick="app.showSection('stock-section')" class="hover:text-blue-200">Inventory</a>`;
-                    linksHtml += `<a href="#" onclick="app.showSection('orders-section')" class="hover:text-blue-200">Orders</a>`;
-                    linksHtml += `<a href="#" onclick="app.showSection('settings-section')" class="hover:text-blue-200">Settings</a>`;
+                
+                if (this.state.currentUser) {
+                    const role = this.state.currentUser.role;
+                    if (userInfo) {
+                        userInfo.innerText = `${this.state.currentUser.email} (${role.toUpperCase()})`;
+                        userInfo.classList.remove('hidden');
+                    }
+                    if (logoutBtn) logoutBtn.classList.remove('hidden');
+                    
+                    if (role === 'admin') {
+                        linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('dashboard-section')" class="hover:text-blue-200">Dashboard</a>`;
+                        linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('financial-section')" class="hover:text-blue-200 text-yellow-300 font-bold"><i class="fas fa-chart-line mr-1"></i>Financials</a>`;
+                        linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('stock-section')" class="hover:text-blue-200">Inventory</a>`;
+                        linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('orders-section')" class="hover:text-blue-200">Orders</a>`;
+                        linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('settings-section')" class="hover:text-blue-200">Settings</a>`;
+                    }
+                    linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('products-section')" class="hover:text-blue-200">Shop</a>`;
+                    linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('about-section')" class="hover:text-blue-200">About</a>`;
+                } else {
+                    if (userInfo) userInfo.classList.add('hidden');
+                    if (logoutBtn) logoutBtn.classList.add('hidden');
+                    
+                    linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('public-catalog-section')" class="hover:text-blue-200">Home</a>`;
+                    linksHtml += `<a href="#" onclick="app.toggleMobileMenu(); app.showSection('auth-section')" class="hover:text-blue-200">Login / Sign Up</a>`;
                 }
-                linksHtml += `<a href="#" onclick="app.showSection('products-section')" class="hover:text-blue-200">Shop</a>`;
-
-                // NO "My Dashboard" for Admin or Staff - strictly hidden as requested
-
-                // --- NEW ABOUT LINK ---
-                linksHtml += `<a href="#" onclick="app.showSection('about-section')" class="hover:text-blue-200">About</a>`;
 
                 // Populate Desktop Center Nav
-                // Populate Desktop Center Nav (STACK TABS STYLE)
                 if (navLinks) {
                     // Use Tab styling: Text with border-bottom indicator on hover
                     const desktopLinks = linksHtml.replace(/class="/g, 'class="px-4 py-3 text-white/80 hover:text-white border-b-2 border-transparent hover:border-white transition duration-200 block ');
@@ -2185,11 +2194,16 @@
                 }
             },
 
-            toggleMobileMenu: function () {
+            toggleMobileMenu: function (forceClose = false) {
                 const nav = document.getElementById('mobile-menu');
                 if (nav) {
-                    nav.classList.toggle('hidden');
-                    nav.classList.toggle('flex');
+                    if (forceClose === true) {
+                        nav.classList.add('hidden');
+                        nav.classList.remove('flex');
+                    } else {
+                        nav.classList.toggle('hidden');
+                        nav.classList.toggle('flex');
+                    }
                 }
             },
 
