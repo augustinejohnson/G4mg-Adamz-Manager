@@ -11,9 +11,9 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="G4mg - Adamz Pharmacy & Stores Ltd" />
-    <meta property="og:description" content="Making Access to Quality Healthcare Products Possible. Distribution agent for Generix Global Investment Ltd." />
-    <meta property="og:url" content="https://g4mg-adamzpharmacy.com/" />
-    <meta property="og:site_name" content="G4mg - Adamz Pharmacy" />
+    <meta property="og:description" content="G4mg - Adamz Pharmacy & Stores Ltd. Making Access to Quality Healthcare Products Possible. Distribution agent for Generix Global Investment Ltd." />
+    <meta property="og:url" content="https://g4mg-adamz-pharmacy.web.app/" />
+    <meta property="og:site_name" content="G4mg - Adamz Pharmacy & Stores Ltd" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="G4mg - Adamz Pharmacy & Stores Ltd" />
     
@@ -39,11 +39,11 @@
         },
         {
           "@type": "WebSite",
-          "@id": "https://g4mg-adamzpharmacy.com/#website",
-          "url": "https://g4mg-adamzpharmacy.com/",
+          "@id": "https://g4mg-adamz-pharmacy.web.app/#website",
+          "url": "https://g4mg-adamz-pharmacy.web.app/",
           "name": "G4mg - Adamz Pharmacy & Stores Ltd",
           "publisher": {
-            "@id": "https://g4mg-adamzpharmacy.com/#organization"
+            "@id": "https://g4mg-adamz-pharmacy.web.app/#organization"
           }
         }
       ]
@@ -274,11 +274,11 @@
                 
                 <div class="relative z-10 p-6 md:p-10 backdrop-blur-md bg-white/10 border border-white/20 h-full w-full flex flex-col justify-center items-center text-center">
                     <div class="text-[10px] md:text-xs text-white/90 font-bold mb-2 tracking-widest uppercase bg-black/20 px-3 py-1 rounded-full backdrop-blur-sm border border-white/10 inline-block">RC: 1148330</div>
-                    <h1 class="text-2xl md:text-4xl font-black mb-1 drop-shadow-md">Welcome to G4mg - Adamz Pharmacy and Stores Ltd</h1>
-                    <h2 class="text-sm md:text-base font-semibold text-yellow-300 mb-2 italic drop-shadow max-w-[200px] md:max-w-none mx-auto leading-snug">Distribution agent for Generix Global Investment Ltd.</h2>
+                    <h1 class="text-3xl md:text-4xl font-black mb-2 drop-shadow-lg leading-tight" style="-webkit-text-stroke: 1px rgba(255,255,255,0.3);">Welcome to G4mg - Adamz Pharmacy and Stores Ltd</h1>
+                    <h2 class="text-sm md:text-base font-bold text-yellow-300 mb-3 italic drop-shadow-md max-w-[220px] md:max-w-none mx-auto leading-snug">Distribution agent for Generix Global Investment Ltd.</h2>
                     
-                    <p class="text-sm md:text-base text-white/95 mb-1 max-w-[280px] md:max-w-xl mx-auto drop-shadow-sm font-medium leading-tight">Making Access to Quality Healthcare Products Possible.</p>
-                    <p class="text-[11px] md:text-xs text-white/90 mb-4 max-w-xl mx-auto flex items-center justify-center drop-shadow-sm gap-1.5">
+                    <p class="text-[13px] md:text-base text-white/95 mb-2 max-w-[220px] md:max-w-xl mx-auto drop-shadow-md font-bold leading-snug">Making Access to Quality Healthcare Products Possible.</p>
+                    <p class="text-[11px] md:text-xs text-white/90 mb-4 max-w-xl mx-auto flex items-center justify-center drop-shadow-sm gap-1.5 font-medium">
                         <i class="fas fa-map-marker-alt"></i> Warehouse/Office: 6c anon plaza Gudu district, Abuja
                     </p>
                     
@@ -1920,6 +1920,7 @@
                     if (JSON.stringify(this.state.products) !== JSON.stringify(sortedProducts)) {
                         this.state.products = sortedProducts;
                         this.updateUI();
+                        this.renderPublicCatalog(); // Ensure public landing page also receives live updates
                     }
                 });
 
