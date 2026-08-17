@@ -82,13 +82,16 @@
         // Initialize Firebase
         let db, auth;
         try {
-            firebase.initializeApp(firebaseConfig);
+            if (!firebase.apps.length) {
+                firebase.initializeApp(firebaseConfig);
+            }
+            const app = firebase.app();
             db = firebase.firestore();
             // Disabled persistence to prevent caching of outdated permission states that block data fetching
             auth = firebase.auth();
             console.log("Firebase Connected");
         } catch (error) {
-            console.error("Firebase Connection Failed", error);
+            console.error("Firebase Init Error:", error);
         }
 
         tailwind.config = {
@@ -1820,7 +1823,11 @@
                     }
                 });
 
-                if (!db || !auth) return;
+                if (!db || !auth) {
+                    console.warn("Firebase not initialized (possibly blocked by adblocker). Showing public catalog as fallback.");
+                    this.showSection('public-catalog-section');
+                    return;
+                }
 
                 // Initialize Auth Listener
                 auth.onAuthStateChanged(user => {
