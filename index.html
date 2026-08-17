@@ -5,21 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>G4mg - Adamz Pharmacy & Stores Ltd</title>
-    <meta name="description" content="G4mg - Adamz Pharmacy & Stores Ltd. Contact us on WhatsApp: +2348063004747">
+    <meta name="description" content="G4mg - Adamz Pharmacy & Stores Ltd. Making Access to Quality Healthcare Products Possible. Distribution agent for Generix Global Investment Ltd.">
+    
+    <!-- OpenGraph SEO -->
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="G4mg - Adamz Pharmacy & Stores Ltd" />
+    <meta property="og:description" content="Making Access to Quality Healthcare Products Possible. Distribution agent for Generix Global Investment Ltd." />
+    <meta property="og:url" content="https://g4mg-adamzpharmacy.com/" />
+    <meta property="og:site_name" content="G4mg - Adamz Pharmacy" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="G4mg - Adamz Pharmacy & Stores Ltd" />
+    
+    <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Pharmacy",
-      "name": "G4mg - Adamz Pharmacy & Stores Ltd",
-      "telephone": "+2348063004747",
-      "url": "https://g4mg-adamzpharmacy.com",
-      "description": "Fully Mobile Optimized Advanced Analytics Pharmacy System.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Road",
-        "addressLocality": "Oghara",
-        "addressRegion": "Delta State"
-      }
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://g4mg-adamzpharmacy.com/#organization",
+          "name": "G4mg - Adamz Pharmacy & Stores Ltd",
+          "description": "Making Access to Quality Healthcare Products Possible.",
+          "url": "https://g4mg-adamzpharmacy.com/",
+          "telephone": "+2348063004747",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "24-25 Sapele-Benin Road",
+            "addressLocality": "Oghara",
+            "addressRegion": "Delta State",
+            "addressCountry": "NG"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://g4mg-adamzpharmacy.com/#website",
+          "url": "https://g4mg-adamzpharmacy.com/",
+          "name": "G4mg - Adamz Pharmacy & Stores Ltd",
+          "publisher": {
+            "@id": "https://g4mg-adamzpharmacy.com/#organization"
+          }
+        }
+      ]
     }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -184,7 +211,8 @@
     <meta name="theme-color" content="#2563eb">
 </head>
 
-<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+    <div id="app" class="flex flex-col min-h-screen">
 
     <nav class="bg-gradient-to-r from-primary-900 to-primary-800 text-white shadow-lg sticky top-0 z-50">
         <!-- TOP: Logo & User Actions -->
@@ -244,49 +272,82 @@
     <main class="container mx-auto px-4 py-8 flex-grow">
         <!-- PUBLIC CATALOG SECTION (Landing Page) -->
         <section id="public-catalog-section" class="hide mb-12">
-            <div class="w-full bg-primary-800 rounded-2xl p-6 md:p-8 text-center text-white shadow-xl mb-10 relative overflow-hidden">
-                <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-                <div class="text-[10px] md:text-xs text-primary-200 font-bold mb-2 relative z-10 tracking-widest uppercase">RC: 1148330</div>
-                <h1 class="text-2xl md:text-3xl font-extrabold mb-1 relative z-10">Welcome to G4mg - Adamz Pharmacy and Stores Ltd</h1>
-                <h2 class="text-sm md:text-base font-semibold text-yellow-300 mb-4 relative z-10 italic">Distribution agent for Generix Global Investment Ltd.</h2>
+            <!-- Hero Card with Glassmorphism Background -->
+            <div id="hero-background-card" class="w-full rounded-2xl shadow-xl mb-10 relative overflow-hidden bg-cover bg-center text-white" style="background-image: url('assets/pharma-glass.jpg');">
+                <!-- Overlay to ensure text readability -->
+                <div class="absolute inset-0 bg-primary-900/40"></div>
                 
-                <p class="text-sm md:text-base text-primary-100 mb-2 relative z-10 max-w-xl mx-auto">Making Access to Quality Healthcare Products Possible.</p>
-                <p class="text-xs text-primary-200 mb-5 relative z-10 max-w-xl mx-auto"><i class="fas fa-map-marker-alt mr-1"></i> Warehouse/Office: 6c anon plaza Gudu district, Abuja</p>
-                
-                <div class="flex justify-center items-center gap-3 relative z-10">
-                    <a href="https://wa.me/2348063004747" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 rounded-full font-bold shadow transition flex items-center text-xs">
-                        <i class="fab fa-whatsapp text-sm mr-1.5"></i> +2348063004747
-                    </a>
-                    <button onclick="app.showSection('auth-section')" class="bg-white text-primary-800 hover:bg-gray-50 px-4 py-1.5 rounded-full font-bold shadow transition border border-white text-xs">
-                        <i class="fas fa-user-circle mr-1.5"></i> Login / Sign Up
-                    </button>
+                <div class="relative z-10 p-6 md:p-10 backdrop-blur-md bg-white/10 border border-white/20 h-full w-full flex flex-col justify-center items-center text-center">
+                    <div class="text-[10px] md:text-xs text-white/90 font-bold mb-3 tracking-widest uppercase bg-black/20 px-3 py-1 rounded-full backdrop-blur-sm border border-white/10 inline-block">RC: 1148330</div>
+                    <h1 class="text-2xl md:text-4xl font-extrabold mb-2 drop-shadow-md">Welcome to G4mg - Adamz Pharmacy and Stores Ltd</h1>
+                    <h2 class="text-sm md:text-base font-semibold text-yellow-300 mb-6 italic drop-shadow">Distribution agent for Generix Global Investment Ltd.</h2>
+                    
+                    <p class="text-sm md:text-base text-white/95 mb-2 max-w-xl mx-auto drop-shadow-sm font-medium">Making Access to Quality Healthcare Products Possible.</p>
+                    <p class="text-xs text-white/90 mb-6 max-w-xl mx-auto flex items-center justify-center drop-shadow-sm gap-1.5">
+                        <i class="fas fa-map-marker-alt"></i> Warehouse/Office: 6c anon plaza Gudu district, Abuja
+                    </p>
+                    
+                    <div class="flex flex-wrap justify-center items-center gap-3">
+                        <a href="https://wa.me/2348063004747" target="_blank" class="bg-green-500/90 backdrop-blur-sm hover:bg-green-500 border border-green-400/50 text-white px-5 py-2.5 rounded-full font-bold shadow-lg transition flex items-center text-xs md:text-sm">
+                            <i class="fab fa-whatsapp text-lg mr-2"></i> +2348063004747
+                        </a>
+                        <button onclick="app.showSection('auth-section')" class="bg-white/90 backdrop-blur-sm hover:bg-white text-primary-900 px-5 py-2.5 rounded-full font-bold shadow-lg transition border border-white text-xs md:text-sm">
+                            <i class="fas fa-user-circle mr-2"></i> Login / Sign Up
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Introductory Card -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8 mb-10 text-gray-700 leading-relaxed text-sm md:text-base">
-                <p class="mb-4">
-                    <strong class="text-primary-800">G4MG-ADAMZ Pharmacy and Stores Ltd</strong> is a Nigerian pharmaceutical company dedicated to improving healthcare access through the reliable distribution and supply of safe, affordable, high-quality, and efficacious medicines. 
-                    We serve healthcare institutions, pharmacies, clinics, healthcare professionals, and patients by ensuring consistent availability of essential medicines and healthcare solutions across Nigeria.
-                </p>
-                
-                <div class="bg-gray-50/80 p-5 rounded-xl border border-gray-100 mb-4">
-                    <h3 class="font-bold text-gray-800 mb-3 text-base">Our product portfolio includes:</h3>
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 list-none">
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs"></i><span>Antidiabetic medications</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs"></i><span>Antihypertensives</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs"></i><span>Anti-infectives</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs"></i><span>Eye and ear drops</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs"></i><span>Anaesthetic products</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs"></i><span>Fertility medications</span></li>
-                        <li class="flex items-start sm:col-span-2"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs"></i><span>And other specialty healthcare products</span></li>
-                    </ul>
+            <!-- About Us Section with Image -->
+            <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg border border-white p-6 md:p-8 mb-10 text-gray-700 leading-relaxed text-sm md:text-base">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 bg-primary-800 text-white rounded-full flex items-center justify-center shadow-md">
+                                <i class="fas fa-bullseye text-lg"></i>
+                            </div>
+                            <h2 class="text-xl md:text-2xl font-bold text-primary-800 drop-shadow-sm">About Us</h2>
+                        </div>
+
+                        <p class="mb-6 font-medium">
+                            <strong class="text-primary-800">G4MG-ADAMZ Pharmacy and Stores Ltd</strong> is a Nigerian pharmaceutical company dedicated to improving healthcare access through the reliable distribution and supply of safe, affordable, high-quality, and efficacious medicines. 
+                            We serve healthcare institutions, pharmacies, clinics, healthcare professionals, and patients by ensuring consistent availability of essential medicines and healthcare solutions across Nigeria.
+                        </p>
+                        
+                        <div class="bg-primary-50/80 backdrop-blur-md p-5 rounded-xl border border-primary-100 shadow-sm">
+                            <h3 class="font-bold text-primary-800 mb-2 text-base md:text-lg flex items-center"><i class="fas fa-lightbulb text-yellow-500 mr-2 drop-shadow-sm"></i>Mission & Vision: Innovation</h3>
+                            <p class="leading-relaxed text-gray-800 text-sm md:text-base font-medium">
+                                Through a dependable distribution network and an unwavering commitment to quality, we make essential healthcare products readily accessible nationwide. 
+                                Guided by integrity, professionalism, and a strong focus on customer satisfaction, <strong class="text-primary-800">G4MG-ADAMZ Pharmacy and Stores Ltd</strong> works to enhance patient outcomes and support effective healthcare delivery. Our mission is to make unique, high-quality healthcare products accessible — contributing to healthier communities and an improved quality of life.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Glassmorphism Image Container -->
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/50 group h-full min-h-[300px]">
+                        <div class="absolute inset-0 bg-primary-900/10 group-hover:bg-transparent transition duration-500 z-10 pointer-events-none"></div>
+                        <img id="about-us-image" src="assets/about-us-v2.jpg" alt="Pharmaceutical Laboratory" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" />
+                    </div>
                 </div>
 
-                <p>
-                    Through a dependable distribution network and an unwavering commitment to quality, we make essential healthcare products readily accessible nationwide. 
-                    Guided by integrity, professionalism, and a strong focus on customer satisfaction, <strong class="text-primary-800">G4MG-ADAMZ Pharmacy and Stores Ltd</strong> works to enhance patient outcomes and support effective healthcare delivery. Our mission is to make unique, high-quality healthcare products accessible — contributing to healthier communities and an improved quality of life.
-                </p>
+                <!-- Glassmorphism Portfolio Card (Now visually distinct at bottom of About Us) -->
+                <div class="relative overflow-hidden p-6 rounded-xl shadow-lg border border-white/60 bg-gradient-to-br from-blue-50/60 to-primary-50/40 backdrop-blur-xl">
+                    <div class="absolute inset-0 bg-white/40 pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <h3 class="font-bold text-primary-900 mb-4 text-base md:text-lg flex items-center">
+                            <i class="fas fa-box-open text-primary-500 mr-2"></i> Our product portfolio includes:
+                        </h3>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4 list-none text-gray-700 font-medium text-sm md:text-base">
+                            <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs drop-shadow-sm"></i><span>Antidiabetic medications</span></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs drop-shadow-sm"></i><span>Antihypertensives</span></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs drop-shadow-sm"></i><span>Anti-infectives</span></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs drop-shadow-sm"></i><span>Eye and ear drops</span></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs drop-shadow-sm"></i><span>Anaesthetic products</span></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs drop-shadow-sm"></i><span>Fertility medications</span></li>
+                            <li class="flex items-start sm:col-span-2"><i class="fas fa-check-circle text-primary-500 mt-1 mr-2 text-xs drop-shadow-sm"></i><span>And other specialty healthcare products</span></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <!-- Product Grid -->
@@ -840,11 +901,27 @@
 
             <div id="admin-settings-panel" class="bg-white p-6 rounded-lg shadow border-t-4 border-gray-600">
                 <div class="mb-6">
-                    <h3 class="text-lg font-bold text-primary-800 mb-2 border-b pb-2">Branding</h3>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Company Logo URL</label>
-                    <input type="text" id="conf-logo-url" class="w-full border p-2 rounded bg-gray-50"
-                        placeholder="https://...">
-                    <p class="text-xs text-gray-500 mt-1">Paste a link to your logo image.</p>
+                    <h3 class="text-lg font-bold text-primary-800 mb-2 border-b pb-2">Branding & Hero</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Company Logo URL</label>
+                            <input type="text" id="conf-logo-url" class="w-full border p-2 rounded bg-gray-50"
+                                placeholder="https://...">
+                            <p class="text-xs text-gray-500 mt-1">Paste a link to your logo image.</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Hero Background Image URL</label>
+                            <input type="text" id="conf-hero-bg" class="w-full border p-2 rounded bg-gray-50"
+                                placeholder="assets/pharma-glass.jpg">
+                            <p class="text-xs text-gray-500 mt-1">Background image for the welcome card.</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">About Us Image URL</label>
+                            <input type="text" id="conf-about-bg" class="w-full border p-2 rounded bg-gray-50"
+                                placeholder="assets/about-us-v2.jpg">
+                            <p class="text-xs text-gray-500 mt-1">Image shown in the About Us section.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="mb-6">
                     <h3 class="text-lg font-bold text-primary-800 mb-2 border-b pb-2">Communication</h3>
@@ -1449,10 +1526,64 @@
         </div>
     </div>
 
-    <footer class="bg-white border-t py-4 text-center mt-auto">
-        <p class="text-xs text-gray-500">
-            Powered by <span class="font-bold text-gray-700">Ronimation Studios</span> &copy; 2026. All Rights Reserved.
-        </p>
+    <footer class="bg-white border-t pt-10 pb-6 mt-auto">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-center md:text-left">
+                <!-- Brand & About -->
+                <div>
+                    <h3 class="font-bold text-lg text-primary-800 mb-4">G4mg - Adamz Pharmacy</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                        Making Access to Quality Healthcare Products Possible. Distribution agent for Generix Global Investment Ltd.
+                    </p>
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider">RC: 1148330</p>
+                </div>
+
+                <!-- Contact & Address -->
+                <div>
+                    <h3 class="font-bold text-lg text-primary-800 mb-4">Contact Us</h3>
+                    <ul class="text-sm text-gray-600 space-y-3">
+                        <li class="flex items-start justify-center md:justify-start text-left">
+                            <i class="fas fa-map-marker-alt text-primary-500 mt-1 mr-3 w-4 text-center"></i>
+                            <span><strong>Warehouse/Office:</strong><br>6c anon plaza Gudu district, Abuja</span>
+                        </li>
+                        <li class="flex items-start justify-center md:justify-start text-left">
+                            <i class="fas fa-map-marker-alt text-primary-500 mt-1 mr-3 w-4 text-center"></i>
+                            <span><strong>Corporate Headquarters:</strong><br>Generix Global Pharmaceuticals<br>10-12, James Watt Road<br>Benin City, Edo State</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start mt-2">
+                            <i class="fab fa-whatsapp text-green-500 text-lg mr-3 w-4 text-center"></i>
+                            <a href="https://wa.me/2348063004747" target="_blank" class="hover:text-primary-600 transition">+2348063004747</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Socials & Links -->
+                <div>
+                    <h3 class="font-bold text-lg text-primary-800 mb-4">Stay Connected</h3>
+                    <p class="text-sm text-gray-600 mb-4">Get in touch with us for more information about our healthcare services.</p>
+                    <div class="flex justify-center md:justify-start gap-4">
+                        <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors shadow-sm">
+                            <i class="fab fa-facebook-f text-lg"></i>
+                        </a>
+                        <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-blue-50 text-blue-700 flex items-center justify-center hover:bg-blue-700 hover:text-white transition-colors shadow-sm">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                        <a href="mailto:info@generixglobal.com" class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors shadow-sm">
+                            <i class="fas fa-envelope text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t pt-6 text-center">
+                <p class="text-xs text-gray-500 mb-2">
+                    Copyright &copy; 2026 G4mg - Adamz Pharmacy & Stores Ltd. All Rights Reserved.
+                </p>
+                <p class="text-xs text-gray-400">
+                    Powered by <span class="font-semibold text-gray-600">Ronimation Studios</span>
+                </p>
+            </div>
+        </div>
     </footer>
 
     <!-- LANDING PAGE SECTION -->
@@ -1631,6 +1762,8 @@
             passStaff: "Staff@G4mg",
             passWholesale: "Whole@Sale24",
             logoUrl: "https://via.placeholder.com/100x100?text=Logo",
+            heroBgUrl: "assets/pharma-glass.jpg",
+            aboutUsBgUrl: "assets/about-us-v2.jpg",
             ronimationLogoUrl: "https://via.placeholder.com/200x80?text=Ronimation+Logo",
             freeVersionUrl: "https://adamz-free-version.web.app" // Placeholder
         };
@@ -1817,6 +1950,20 @@
                 document.getElementById('nav-logo').src = url;
                 document.getElementById('login-logo').src = url;
                 document.getElementById('inv-logo').src = url;
+
+                // Hero Background Image
+                const heroBg = c.heroBgUrl || DEFAULT_CONFIG.heroBgUrl;
+                const heroCard = document.getElementById('hero-background-card');
+                if (heroCard) {
+                    heroCard.style.backgroundImage = `url('${heroBg}')`;
+                }
+
+                // About Us Image
+                const aboutBg = c.aboutUsBgUrl || DEFAULT_CONFIG.aboutUsBgUrl;
+                const aboutImage = document.getElementById('about-us-image');
+                if (aboutImage) {
+                    aboutImage.src = aboutBg;
+                }
 
                 // Ronimation Logo
                 const roniUrl = c.ronimationLogoUrl || DEFAULT_CONFIG.ronimationLogoUrl;
@@ -2223,6 +2370,8 @@
                 // System Config (Admin)
                 const c = this.state.config || DEFAULT_CONFIG;
                 document.getElementById('conf-logo-url').value = c.logoUrl || '';
+                document.getElementById('conf-hero-bg').value = c.heroBgUrl || 'assets/pharma-glass.jpg';
+                document.getElementById('conf-about-bg').value = c.aboutUsBgUrl || 'assets/about-us-v2.jpg';
                 document.getElementById('conf-admin-phone').value = c.adminPhone || '';
                 const logisticsEl = document.getElementById('conf-logistics-phone');
                 if (logisticsEl) logisticsEl.value = c.logisticsPhone || '';
@@ -2269,6 +2418,8 @@
                 const logisticsEl = document.getElementById('conf-logistics-phone');
                 const newConfig = {
                     logoUrl: document.getElementById('conf-logo-url').value,
+                    heroBgUrl: document.getElementById('conf-hero-bg').value,
+                    aboutUsBgUrl: document.getElementById('conf-about-bg').value,
                     adminPhone: document.getElementById('conf-admin-phone').value,
                     logisticsPhone: logisticsEl ? logisticsEl.value : '',
                     passAdmin: document.getElementById('conf-pass-admin').value,
