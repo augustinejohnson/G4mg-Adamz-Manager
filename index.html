@@ -84,14 +84,7 @@
         try {
             firebase.initializeApp(firebaseConfig);
             db = firebase.firestore();
-            db.enablePersistence()
-              .catch(function(err) {
-                  if (err.code == 'failed-precondition') {
-                      console.warn('Multiple tabs open, persistence can only be enabled in one tab at a a time.');
-                  } else if (err.code == 'unimplemented') {
-                      console.warn('The current browser does not support all of the features required to enable persistence');
-                  }
-              });
+            // Disabled persistence to prevent caching of outdated permission states that block data fetching
             auth = firebase.auth();
             console.log("Firebase Connected");
         } catch (error) {
@@ -2422,9 +2415,14 @@
                     passStaff: document.getElementById('conf-pass-staff').value,
                     passWholesale: document.getElementById('conf-pass-wholesale').value
                 };
-                db.collection('settings').doc('config').update(newConfig).then(() => {
-                    alert("Settings updated!");
-                });
+                db.collection('settings').doc('config').set(newConfig, { merge: true })
+                    .then(() => {
+                        alert("Settings updated!");
+                    })
+                    .catch((err) => {
+                        console.error("Save Settings Error:", err);
+                        alert("Error saving settings: " + err.message + "\nPlease try refreshing the page.");
+                    });
             },
 
             // --- ORDER LOGIC ---
