@@ -3514,7 +3514,7 @@
                         <div class="relative bg-white rounded-lg shadow hover:shadow-lg transition p-3 sm:p-4 flex flex-col group">
                             <img src="${imgUrl}" class="h-24 sm:h-32 object-contain mb-3 sm:mb-4 rounded" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
                             <h3 class="font-bold text-sm sm:text-lg leading-tight uppercase">${p.name}</h3>
-                            ${p.genericName ? `<p class="text-gray-500 text-[10px] sm:text-xs mb-2">${p.genericName}</p>` : `<p class="text-gray-500 text-[10px] sm:text-xs mb-2 h-6 sm:h-8 overflow-hidden">${p.desc}</p>`}
+                            <p class="text-gray-500 text-[10px] sm:text-xs mb-2 h-6 sm:h-8 overflow-hidden">${p.genericName || ''}</p>
                             
                             <div class="mt-auto pt-2">
                                 <button onclick="app.togglePublicProductDesc('${p.id}')" class="w-full text-left py-1 sm:py-2 text-xs sm:text-sm font-bold text-medical-600 hover:text-medical-800 flex justify-between items-center transition outline-none">
@@ -3622,7 +3622,7 @@
                                 ${adminActions}
                                 <img src="${p.image}" class="h-24 sm:h-32 object-contain mb-3 sm:mb-4 rounded">
                                 <h3 class="font-bold text-sm sm:text-lg leading-tight uppercase">${p.name}</h3>
-                                ${p.genericName ? `<p class="text-gray-500 text-[10px] sm:text-xs mb-2 h-6 sm:h-8 overflow-hidden">${p.genericName}</p>` : `<p class="text-gray-500 text-[10px] sm:text-xs mb-2 h-6 sm:h-8 overflow-hidden">${p.desc}</p>`}
+                                <p class="text-gray-500 text-[10px] sm:text-xs mb-2 h-6 sm:h-8 overflow-hidden">${p.genericName || ''}</p>
                                 <div class="flex justify-between items-center mb-2 mt-auto">
                                     <span class="font-bold text-primary-800">₦${currentPrice.toLocaleString()}</span>
                                     ${stockDisplay}
@@ -4115,7 +4115,7 @@
 
                     html += `
                         <tr class="${rowClass} border-b hover:bg-gray-100 transition">
-                            <td class="px-6 py-4 font-medium">${p.name}<div class="text-xs text-gray-500">${p.desc}</div></td>
+                            <td class="px-6 py-4 font-medium">${p.name}<div class="text-xs text-gray-500 mt-1">${p.genericName || ''}</div></td>
                             <td class="px-6 py-4">
                                 <div class="flex flex-col gap-2">
                                     <input type="text" value="${p.batchNumber || ''}" class="w-24 border rounded px-2 py-1 text-xs" onchange="app.updateProductBatch('${p.docId}', this.value)" placeholder="Batch #">
