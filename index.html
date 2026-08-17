@@ -1829,8 +1829,17 @@
                     return;
                 }
 
-                // Initialize Auth Listener
+                // Initialize Auth Listener with Timeout Failsafe
+                let authFired = false;
+                setTimeout(() => {
+                    if (!authFired) {
+                        console.warn("Firebase Auth timeout (network hanging). Forcing public UI visibility.");
+                        this.showSection('public-catalog-section');
+                    }
+                }, 2000);
+
                 auth.onAuthStateChanged(user => {
+                    authFired = true;
                     if (user) {
                         console.log("Auth State: User detected", user.email);
                         // Fetch Role from Firestore

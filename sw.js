@@ -1,4 +1,4 @@
-const CACHE_NAME = 'g4mg-adamz-v3';
+const CACHE_NAME = 'g4mg-adamz-v4';
 const urlsToCache = [
   '/',
   '/index.html',
