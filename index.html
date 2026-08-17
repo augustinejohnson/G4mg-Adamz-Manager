@@ -217,13 +217,13 @@
     <nav class="bg-gradient-to-r from-primary-900 to-primary-800 text-white shadow-lg sticky top-0 z-50">
         <!-- TOP: Logo & User Actions -->
         <div class="container mx-auto px-4 py-3 flex justify-between items-center border-b border-white/10">
-            <div class="flex items-center gap-2 md:gap-3 shrink-0 overflow-hidden">
-                <button id="hamburger-btn" onclick="app.toggleMobileMenu()" class="hidden md:hidden text-white text-xl focus:outline-none">
+            <div class="flex items-center gap-2 md:gap-3 shrink-0 min-w-0 w-full">
+                <button id="hamburger-btn" onclick="app.toggleMobileMenu()" class="hidden md:hidden text-white text-xl focus:outline-none shrink-0">
                     <i class="fas fa-bars"></i>
                 </button>
                 <img id="nav-logo" src="https://via.placeholder.com/100x100?text=Logo" alt="Logo"
-                    class="h-8 w-8 md:h-10 md:w-10 rounded-full border-2 border-white bg-white object-contain p-0.5 shadow-sm shrink-0">
-                <div class="overflow-hidden">
+                    class="h-8 w-8 md:h-10 md:w-10 rounded-full border-2 border-white bg-white object-contain p-0.5 shadow-sm shrink-0 flex-none" style="display: block !important;">
+                <div class="overflow-hidden min-w-0 flex-1">
                     <h1 class="font-bold text-xs md:text-lg leading-tight tracking-tight whitespace-nowrap overflow-hidden text-ellipsis">G4mg - Adamz Pharmacy</h1>
                     <p class="text-[9px] md:text-[10px] text-blue-200 uppercase tracking-widest font-semibold whitespace-nowrap">Ron Cloud System <span
                             id="connection-status"
