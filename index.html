@@ -2196,18 +2196,14 @@
                     const isPremiumUser = this.state.currentUser.isPremium || role === 'admin';
 
                     if (role === 'admin') {
-                        // Auto-patch missing received dates for backward compatibility
-                        db.collection('orders').where('isReceived', '==', true).get().then(s => {
+                        // Revert accidental patch for everyone except Amos
+                        db.collection('orders').where('receivedDate', '==', '2026-09-01T12:00:00Z').get().then(s => {
                            s.forEach(doc => {
                                const data = doc.data();
-                               if(!data.receivedDate) {
-                                   const d = new Date(data.date);
-                                   // If created in late August, it was likely the cross-month Sept 1st sale
-                                   if (d.getMonth() === 7 && d.getDate() >= 28) {
-                                       doc.ref.update({ receivedDate: "2026-09-01T12:00:00Z" });
-                                   } else {
-                                       doc.ref.update({ receivedDate: data.date });
-                                   }
+                               const customerName = data.customer && data.customer.name ? data.customer.name.toLowerCase() : "";
+                               // Revert any order that isn't Amos back to its original August date
+                               if (!customerName.includes("amos")) {
+                                   doc.ref.update({ receivedDate: data.date });
                                }
                            });
                         });
