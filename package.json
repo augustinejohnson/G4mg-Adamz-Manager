@@ -1,0 +1,13 @@
+{
+  "name": "g4mg-adamz-management",
+  "version": "1.0.0",
+  "description": "Adamz Pharmacy Data Management System",
+  "scripts": {
+    "dev": "npx serve ."
+  },
+  "author": "Ronimation Studios",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^25.9.0"
+  }
+}
