@@ -2534,7 +2534,7 @@
                 // Update Status
                 // Update Status
                 const orderRef = db.collection('orders').doc(docId);
-                batch.update(orderRef, { isReceived: true, status: 'received' });
+                batch.update(orderRef, { isReceived: true, status: 'received', receivedDate: new Date().toISOString() });
 
                 batch.commit().then(() => {
                     // Notify Admin
@@ -4031,6 +4031,7 @@
                 if (newStatus === 'Delivered') {
                     updates.isReceived = true;
                     updates.isApproved = true;
+                    updates.receivedDate = new Date().toISOString();
                 }
 
                 db.collection('orders').doc(docId).update(updates)
@@ -4086,7 +4087,10 @@
 
                 this.state.orders.forEach(o => {
                     if (o.isReceived && !o.isDeleted) {
-                        const d = new Date(o.date);
+                        // Use receivedDate if available (to properly attribute cross-month completions), otherwise fallback to creation date
+                        const orderDate = o.receivedDate ? o.receivedDate : o.date;
+                        const d = new Date(orderDate);
+                        
                         if (d.getMonth() === currentMonth && d.getFullYear() === currentYear) {
                             const custName = o.customer.name;
                             o.items.forEach(i => {

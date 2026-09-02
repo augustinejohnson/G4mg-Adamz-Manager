@@ -6,5 +6,8 @@
     "dev": "npx serve ."
   },
   "author": "Ronimation Studios",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^25.9.0"
+  }
 }
