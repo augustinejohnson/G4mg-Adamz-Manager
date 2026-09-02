@@ -1,63 +1,8 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    // Helper Functions
-    function isSignedIn() {
-      return request.auth != null;
-    }
-    function isAdmin() {
-      return isSignedIn() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
-    }
-    function isStaff() {
-       let role = get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
-       return isSignedIn() && (role == 'staff' || role == 'admin');
-    }
-
-    // 1. USERS COLLECTION
-    // - Users can read/write their own profile.
-    // - Admins can read/write all.
-    match /users/{userId} {
-      allow read, write: if isSignedIn() && (request.auth.uid == userId || isAdmin());
-    }
-
-    // 2. PRODUCTS COLLECTION
-    // - Public Read (Catalog is open).
-    // - Admin/Staff Write (Inventory management).
-    match /products/{productId} {
-      allow read: if true;
-      allow write: if isStaff(); 
-    }
-
-    // 3. ORDERS COLLECTION
-    // - Users can create (place order).
-    // - Users can look up their own orders (by creator ID).
-    // - Staff/Admin can read/write all.
-    match /orders/{orderId} {
-      allow create: if true; // Guests can order logic (if supported) or isSignedIn()
-      allow read: if isSignedIn() && (resource.data.customer.email == request.auth.token.email || isStaff());
-      allow update: if isStaff(); // Only staff updates status
-      allow delete: if isAdmin(); // Only Admin deletes
-    }
-
-    // 4. SUBSCRIPTIONS (Plan Status)
-    // - Public Read (to check trial status on login).
-    // - Write restricted to payment callbacks (simulated here, but usually Admin or Server-Admin only).
-    match /subscriptions/{docId} {
-      allow read: if true;
-      allow write: if true; // OPEN FOR DEMO ONLY (Start Trial). Secure this in prod!
-    }
-    
-    // 5. SETTINGS
-    match /settings/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    // 6. STOCK RECEIPTS (Inventory Received Tracking)
-    match /stockReceipts/{receiptId} {
-      allow read: if isStaff();
-      allow write: if isAdmin();
+    match /{document=**} {
+      allow read, write: if true;
     }
   }
 }

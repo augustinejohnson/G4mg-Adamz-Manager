@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recloud ERP - Master Technical Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; }
+        .section-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); margin-bottom: 2rem; border: 1px solid #e2e8f0; }
+        .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    </style>
+</head>
+<body class="text-slate-800 p-4 md:p-8">
+
+    <div class="max-w-5xl mx-auto">
+        
+        <!-- Header -->
+        <header class="bg-slate-900 rounded-2xl p-8 md:p-12 mb-8 text-white relative overflow-hidden shadow-2xl">
+            <div class="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] bg-emerald-500 rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
+            <div class="relative z-10">
+                <span class="badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 mb-4">Master Documentation</span>
+                <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">Recloud ERP Architecture & Handover</h1>
+                <p class="text-slate-300 text-lg md:text-xl max-w-2xl leading-relaxed">The authoritative, fully detailed breakdown of the system. Covers the complete architecture, every deployed module (including Accounting and Analytics), local setup, and SEO deployment strategies.</p>
+                <div class="mt-6 flex flex-wrap gap-4">
+                    <a href="https://recloud-erp.web.app" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-6 rounded-lg transition-colors">
+                        View Live Platform
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tech Stack -->
+        <div class="section-card">
+            <h2 class="text-2xl font-bold text-slate-800 border-b-2 border-slate-100 pb-3 mb-6 flex items-center gap-2">
+                <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                Core Technologies & System Architecture
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-bold text-slate-700 mb-3 uppercase tracking-wider text-sm">Languages & Frameworks</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-blue-500"></span> <strong>React.js + Vite:</strong> Core frontend framework for the Single Page Application (SPA).</li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-cyan-500"></span> <strong>Tailwind CSS:</strong> Rapid UI styling and responsive design.</li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-yellow-500"></span> <strong>Firebase Ecosystem:</strong> Firestore (NoSQL database), Authentication (Login sessions), Hosting (Production build), Storage (Media & Avatars).</li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-indigo-500"></span> <strong>Vite PWA:</strong> Powers offline capabilities and install-to-homescreen functionality via Workbox.</li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-500"></span> <strong>jsPDF & html2canvas:</strong> For automated dynamic PDF document generation.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-700 mb-3 uppercase tracking-wider text-sm">Structural Integrity & Strategy</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-2">The system utilizes a central orchestrator approach. The <code>App.jsx</code> file acts as the "Brain", fetching all data collections via a massive <code>Promise.all</code> execution upon login. This ensures all modules (HR, CRM, POS, Accounting) have instant, synchronous access to data without loading spinners when switching tabs.</p>
+                    <p class="text-sm text-slate-600 leading-relaxed">It relies heavily on <strong>Multi-tenancy</strong> (data is strictly isolated by Organization IDs) and <strong>Role-Based Access Control (RBAC)</strong>, restricting views based on employee roles and branch assignments.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Local Setup & Deployment -->
+        <div class="section-card bg-slate-800 border-none text-white">
+            <h2 class="text-2xl font-bold border-b-2 border-slate-700 pb-3 mb-6 flex items-center gap-2">
+                <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+                Local Setup & Deployment Guide
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-bold text-indigo-400 mb-3 uppercase text-sm">Local Development Setup</h3>
+                    <div class="bg-slate-900 rounded-lg p-4 font-mono text-sm text-slate-300 space-y-2">
+                        <p class="text-slate-500"># 1. Clone the repository</p>
+                        <p>git clone https://github.com/augustinejohnson/recloud-erp.git</p>
+                        <p>cd recloud-erp</p>
+                        <p class="text-slate-500 mt-2"># 2. Install dependencies</p>
+                        <p>npm install</p>
+                        <p class="text-slate-500 mt-2"># 3. Start development server</p>
+                        <p>npm run dev</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-emerald-400 mb-3 uppercase text-sm">Deployment to Firebase</h3>
+                    <p class="text-sm text-slate-300 mb-4">Recloud ERP is hosted on Firebase Hosting. Ensure you have the Firebase CLI installed (`npm i -g firebase-tools`) and are logged in via `firebase login`.</p>
+                    <div class="bg-slate-900 rounded-lg p-4 font-mono text-sm text-slate-300 space-y-2">
+                        <p class="text-slate-500"># 1. Build the production bundle</p>
+                        <p>npm run build</p>
+                        <p class="text-slate-500 mt-2"># 2. Deploy to live</p>
+                        <p>firebase deploy --only hosting</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Completed Stages -->
+        <h2 class="text-3xl font-black text-slate-800 mb-6 mt-12">Project Milestones & Completed Stages (Detailed)</h2>
+
+        <!-- Phase 1: Foundation -->
+        <div class="section-card border-l-4 border-l-blue-500">
+            <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-bold text-slate-800">Stage 1: Foundation, Admin, & Human Resources</h3>
+                <span class="badge bg-blue-100 text-blue-700">Completed</span>
+            </div>
+            <p class="text-slate-600 text-sm mb-4">Transitioning from the legacy G4mg-Adamz logic to a scalable cloud ecosystem. Built the structural backbone for users, permissions, and organization data.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h4 class="font-bold text-slate-700 mb-2 text-sm">Module Features</h4>
+                    <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
+                        <li><strong>Global Authentication:</strong> Login screen validating Organization ID and Employee credentials.</li>
+                        <li><strong>Employee Directory:</strong> Full roster management, role assignments (Admin, Manager, Cashier, Sales), and avatar generation.</li>
+                        <li><strong>Branch/Location Management:</strong> Create distinct store locations to bind employees and stock to specific physical places.</li>
+                        <li><strong>Payroll System:</strong> Salary settings, automated Payslip generation (PDF), and net pay tracking.</li>
+                        <li><strong>Recruitment System (ATS):</strong> Public-facing careers page and applicant tracking system pipeline (Applied -> Interview -> Hired).</li>
+                        <li><strong>Employee Self-Service (ESS):</strong> Restricted portal for non-admin staff to view payslips, request time-off, and check in for attendance.</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h4 class="font-bold text-slate-700 mb-2 text-sm">Challenges & Resolutions</h4>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li><strong>Challenge:</strong> Employees needed access to only their specific store's data.</li>
+                        <li><strong>Resolution:</strong> Implemented a <code>warehouseId</code> variable in the employee profile. All subsequent queries check if a user is an Admin; if not, it strictly filters data to match their <code>warehouseId</code>.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 1.5: CRM -->
+        <div class="section-card border-l-4 border-l-purple-500">
+            <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-bold text-slate-800">Stage 1.5: CRM (Customer Relationship Management)</h3>
+                <span class="badge bg-purple-100 text-purple-700">Completed</span>
+            </div>
+            <p class="text-slate-600 text-sm mb-4">Developed a robust client tracking and sales pipeline system for B2B and retail tracking.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h4 class="font-bold text-slate-700 mb-2 text-sm">Module Features</h4>
+                    <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
+                        <li><strong>Customer Database:</strong> Add, edit, and track customer contact information globally.</li>
+                        <li><strong>Deals Pipeline:</strong> Kanban-style drag-and-drop board (Lead -> Negotiation -> Won -> Lost).</li>
+                        <li><strong>Activity Logging & Tasks:</strong> Log calls, emails, meetings, and create follow-up tasks with due dates.</li>
+                        <li><strong>Stuck Deal Alerts:</strong> Deals inactive for > 7 days flag visually to prevent lost revenue.</li>
+                        <li><strong>Invoicing:</strong> Generate and track invoices, log payment statuses, and print standard A4 PDF invoices linked directly to profiles.</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h4 class="font-bold text-slate-700 mb-2 text-sm">Challenges & Resolutions</h4>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li><strong>Challenge:</strong> Integrating CRM with POS later in the build.</li>
+                        <li><strong>Resolution:</strong> Structured the <code>customers</code> Firestore collection so that the POS module can read directly from the CRM, allowing cashiers to select existing CRM clients at checkout instantly.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 2: Inventory & POS -->
+        <div class="section-card border-l-4 border-l-emerald-500">
+            <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-bold text-slate-800">Stage 2: Point of Sale (POS) & Inventory Control</h3>
+                <span class="badge bg-emerald-100 text-emerald-700">Completed</span>
+            </div>
+            <p class="text-slate-600 text-sm mb-4">The most complex phase: handling live financial transactions, stock deductions, and cashier workflows.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h4 class="font-bold text-slate-700 mb-2 text-sm">Inventory Features</h4>
+                    <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
+                        <li><strong>Product Catalog:</strong> Categorization (e.g., Pharmaceuticals, Beverages) with image support.</li>
+                        <li><strong>Supplier Network & LPOs:</strong> Database of suppliers assigned to branches. Generate formal Purchase Orders (PDFs) to restock.</li>
+                        <li><strong>Stock Distribution:</strong> Track inventory levels uniquely per warehouse branch.</li>
+                        <li><strong>B2B Wholesale Portal:</strong> Dedicated routing system for distributors to log in and place bulk orders within credit limits.</li>
+                    </ul>
+                    <h4 class="font-bold text-slate-700 mb-2 text-sm mt-4">POS Features</h4>
+                    <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
+                        <li><strong>Fast Checkout UI:</strong> Image grid, category filters, and smart search bar. Fully mobile-responsive cart.</li>
+                        <li><strong>Hold System:</strong> Pause a transaction queue and start a new one if a customer is delayed.</li>
+                        <li><strong>Taxes, Discounts, Split Payments:</strong> Manual percentage input per transaction. Supports combined card/cash checkout.</li>
+                        <li><strong>Receipt Engine:</strong> Downloads an 80mm/58mm thermal-printer ready PDF on sale completion.</li>
+                        <li><strong>Shift Management (Best Practice):</strong> Cashiers must declare opening floats (cash in drawer) at the start of shifts and generate Z-reports (Expected vs Actual counts) at shift end to combat fraud.</li>
+                        <li><strong>Global Barcode Listeners:</strong> Implemented global window listeners to instantly capture 1D/2D USB barcode scanner inputs without requiring focus on a specific input field, intelligently ignoring typing.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h4 class="font-bold text-slate-700 mb-2 text-sm">Challenges, Questions & Solutions</h4>
+                    <ul class="text-sm text-slate-600 space-y-4">
+                        <li>
+                            <strong>Q: Can customer names be detected directly from ATM cards?</strong><br>
+                            <span class="text-slate-500 text-xs">Web applications cannot natively read encrypted physical card chips. <strong>Solution:</strong> We built a Dual-Flow system. We provided a manual button for traditional bank POS machines, and a "Sync Smart Terminal" button to interface with API-enabled machines (like Paystack Terminal) for automated data retrieval.</span>
+                        </li>
+                        <li>
+                            <strong>Challenge: Stock Race Conditions during checkout.</strong><br>
+                            <span class="text-slate-500 text-xs"><strong>Solution:</strong> Utilized Firebase <code>writeBatch</code>. A sale record and a stock deduction happen atomically. If the stock deduction fails, the sale cancels, ensuring inventory levels are never compromised.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage 3: Accounting & Operations -->
+        <div class="section-card border-l-4 border-l-rose-500">
+            <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-bold text-slate-800">Stage 3: Accounting, Reports & Operational Backbone</h3>
+                <span class="badge bg-rose-100 text-rose-700">Completed</span>
+            </div>
+            <p class="text-slate-600 text-sm mb-4">The financial core and analytics engines that tie all operations together into actionable insights and ledgers.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h4 class="font-bold text-slate-700 mb-2 text-sm">Accounting Module Features</h4>
+                    <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
+                        <li><strong>General Ledger:</strong> Intercepts all transactions from the POS and Invoices automatically.</li>
+                        <li><strong>Profit & Loss Reporting:</strong> Generates real-time financial health reports.</li>
+                        <li><strong>Expense Tracking:</strong> Complete ledger for outgoings.</li>
+                        <li><strong>Chart of Accounts:</strong> Fully featured categorization of assets, liabilities, and equities.</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h4 class="font-bold text-slate-700 mb-2 text-sm">Analytics & Specialized Operations</h4>
+                    <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
+                        <li><strong>Advanced Reports Dashboard:</strong> Converts raw sales, CRM, and HR data into visual graphs (Revenue over time, top-selling products, employee performance metrics).</li>
+                        <li><strong>Projects Module:</strong> Task tracking, timelines, and milestone management for service-based businesses.</li>
+                        <li><strong>Law Firm Module:</strong> Bespoke capabilities for legal practices, managing case files, hearing dates, and client documentation.</li>
+                        <li><strong>AI Assistant Module:</strong> Integrated for dynamic business insights.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage 4: Stabilization & SEO -->
+        <div class="section-card border-l-4 border-l-indigo-500">
+            <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-bold text-slate-800">Stage 4: Platform Stabilization, SEO & UI Polish</h3>
+                <span class="badge bg-indigo-100 text-indigo-700">Completed</span>
+            </div>
+            <p class="text-slate-600 text-sm mb-4">Focused on heavily solidifying the codebase, preventing crashes during data loads, refining the UI, and ensuring the platform is discoverable by search engines.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h4 class="font-bold text-slate-700 mb-2 text-sm">Stability & UI Adjustments</h4>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                        <li><strong>Global Array Safety Sweep:</strong> Replaced vulnerable <code>.map()</code> and <code>.filter()</code> functions globally with safety fallbacks like <code>(array || []).filter(...)</code>. This definitively prevents the application from crashing when Firebase hasn't finished loading data.</li>
+                        <li><strong>Vite Chunk Load Error Boundary:</strong> Added a global error boundary to <code>App.jsx</code> that automatically detects Vite dynamic import failures (which happen when a PWA updates or loses connection) and forces a hard browser reload instead of showing a blank screen.</li>
+                        <li><strong>Brand Polish & Footers:</strong> Injected a uniform footer across all public views highlighting the WhatsApp Support Number (`+2348124580183`) and a "Developed by Ronimation Studios" credit. Padding and text scales were precisely adjusted for visual hierarchy.</li>
+                        <li><strong>Dedicated 'About' Page:</strong> Separated the "Features" section from the Registration form. The "About Platform" navigation tab now leads to a clean, distraction-free page.</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h4 class="font-bold text-slate-700 mb-2 text-sm">SEO (Search Engine Optimization)</h4>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                        <li><strong>Google Site Verification:</strong> Integrated <code>google-site-verification</code> meta tag (<code>QwseIkuxijwSDPMX8s1ZUyLGjbFmakUoTWipiZPzqQw</code>) into the `<head>` of <code>index.html</code>.</li>
+                        <li><strong>Search Engine Crawling:</strong> Generated a dynamic <code>sitemap.xml</code> and <code>robots.txt</code> file in the public directory to ensure search engines can parse all public-facing pages efficiently, ensuring rankablity.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hardware Guidelines -->
+        <div class="section-card bg-slate-800 border-none text-white">
+            <h2 class="text-2xl font-bold border-b-2 border-slate-700 pb-3 mb-6 flex items-center gap-2">
+                Hardware Integration Guide
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-bold text-emerald-400 mb-2 uppercase text-sm">1. Printing Capabilities</h3>
+                    <p class="text-sm text-slate-300 mb-2">The system generates standard A4 PDFs for Invoices/LPOs, and 80mm condensed PDFs for the POS. <strong>Required hardware:</strong></p>
+                    <ul class="text-sm text-slate-300 list-disc list-inside">
+                        <li>80mm Thermal Receipt Printer (USB/Bluetooth) - e.g., Xprinter.</li>
+                        <li>Standard Office Printer (For Invoices/LPOs).</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-blue-400 mb-2 uppercase text-sm">2. Payment Terminals</h3>
+                    <p class="text-sm text-slate-300 mb-2">Based on the checkout flow you choose:</p>
+                    <ul class="text-sm text-slate-300 list-disc list-inside space-y-1">
+                        <li><strong>Standard Setup:</strong> Regular Bank POS (Moniepoint, Opay). Cashier uses "Complete Sale (Manual)".</li>
+                        <li><strong>Advanced Setup:</strong> Smart POS (Paystack/Square). Uses the "Sync Smart Terminal" feature to push prices to the machine automatically over WiFi.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- What is Left -->
+        <div class="section-card border-l-4 border-l-orange-500">
+            <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-bold text-slate-800">Stage 5: What Is Left To Be Done (Future Roadmap)</h3>
+                <span class="badge bg-orange-100 text-orange-700">Upcoming</span>
+            </div>
+            <p class="text-slate-600 text-sm mb-4">While the platform is incredibly feature-rich and fully operational for end-to-end business management, future roadmaps could include:</p>
+            
+            <ul class="text-sm text-slate-700 space-y-3">
+                <li class="flex items-start gap-3">
+                    <span class="bg-orange-100 text-orange-600 p-1 rounded mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg></span>
+                    <div>
+                        <strong class="block text-slate-800">Deeper API Integrations</strong>
+                        Connecting the Webhook Module directly to tools like Zapier or WhatsApp Cloud API for automated SMS/WhatsApp alerts on invoice generation.
+                    </div>
+                </li>
+                <li class="flex items-start gap-3">
+                    <span class="bg-orange-100 text-orange-600 p-1 rounded mt-0.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg></span>
+                    <div>
+                        <strong class="block text-slate-800">Custom Domain Mapping</strong>
+                        Moving from `recloud-erp.web.app` to a shorter, custom branded domain (e.g., `recloud.com`) via Firebase Hosting settings.
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>
