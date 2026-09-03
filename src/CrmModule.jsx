@@ -205,8 +205,13 @@ export default function CrmModule({
 
   const handleDeleteCustomer = async (id) => {
     if (confirm("Are you sure you want to delete this customer?")) {
-      await deleteCustomer(id, currentTenant);
-      refreshData();
+      try {
+        await deleteCustomer(id, currentTenant);
+        refreshData();
+      } catch (err) {
+        console.error("Error deleting customer:", err);
+        alert("Failed to delete customer: " + err.message);
+      }
     }
   };
 

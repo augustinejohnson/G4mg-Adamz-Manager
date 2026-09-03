@@ -241,7 +241,7 @@ class ErrorBoundary extends React.Component {
 }
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('hr');
+  const [activeTab, setActiveTab] = useState('launcher');
   const [publicView, setPublicView] = useState('landing'); // 'landing', 'login', 'careers', 'register', 'feature_detail'
   const [selectedFeature, setSelectedFeature] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -532,17 +532,20 @@ export default function App() {
 
   // Handle role-based default tabs (only on login / account switch)
   useEffect(() => {
-    if (currentUser?.role === 'staff') {
-      setActiveTab('ess');
-    } else if (currentUser?.role === 'cashier') {
-      setActiveTab('pos');
-    } else if (currentUser?.role === 'client') {
+    if (!currentUser) return;
+    
+    const normalizedRole = currentUser.role?.toLowerCase();
+    if (['client'].includes(normalizedRole)) {
       setActiveTab('client_portal');
-    } else if (['distributor', 'sales_rep', 'b2b_customer'].includes(currentUser?.role)) {
+    } else if (['distributor', 'sales_rep', 'b2b_customer'].includes(normalizedRole)) {
       setActiveTab('b2b');
-    } else if (currentUser?.role === 'admin') {
-      setActiveTab('hr');
-      setHrTab('directory');
+    } else if (normalizedRole === 'cashier') {
+      setActiveTab('pos');
+    } else if (['admin', 'hr_manager', 'sales_manager', 'inventory_manager', 'accountant', 'super_admin'].includes(normalizedRole)) {
+      setActiveTab('launcher');
+    } else {
+      // Default to ESS for all other internal roles (staff, engineers, etc.)
+      setActiveTab('ess');
     }
   }, [currentUser?.id]);
 
@@ -2179,7 +2182,7 @@ export default function App() {
               </>
             )}
 
-            {currentUser.role === 'staff' && (
+            {!['client', 'b2b_customer', 'distributor', 'sales_rep'].includes(currentUser.role?.toLowerCase()) && (
               <button onClick={() => { setIsMobileMenuOpen(false); setActiveTab('ess'); }} className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs md:text-sm font-medium transition-all duration-200 ${activeTab === 'ess' ? 'bg-recloud-500/20 text-recloud-300 shadow-inner border border-recloud-500/20' : 'hover:bg-slate-800/50 hover:text-white'}`}>
                 <Users className="w-5 h-5" /> Employee Portal
               </button>
@@ -2358,6 +2361,15 @@ export default function App() {
                       <LayoutDashboard className="w-5 h-5 md:w-6 md:h-6 text-indigo-500" />
                     </div>
                     <span className="font-bold text-[10px] md:text-xs text-slate-700 group-hover:text-indigo-600 transition-colors text-center leading-tight">Dashboard</span>
+                  </div>
+                )}
+                
+                {!['client', 'b2b_customer', 'distributor', 'sales_rep'].includes(currentUser.role?.toLowerCase()) && (
+                  <div onClick={() => setActiveTab('ess')} className="group flex flex-col items-center gap-2 md:gap-3 cursor-pointer">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/70 backdrop-blur-xl shadow-lg shadow-blue-900/5 flex items-center justify-center border border-white/50 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-blue-900/10 transition-all duration-300 group-hover:scale-105">
+                      <Users className="w-5 h-5 md:w-6 md:h-6 text-blue-500" />
+                    </div>
+                    <span className="font-bold text-[10px] md:text-xs text-slate-700 group-hover:text-blue-600 transition-colors text-center leading-tight">Employee Portal</span>
                   </div>
                 )}
 

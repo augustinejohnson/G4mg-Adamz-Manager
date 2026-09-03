@@ -926,12 +926,10 @@ export default function InventoryModule({
               {(products || []).filter(p => (p.name || '').toLowerCase().includes(searchQuery.toLowerCase()) || p.sku?.toLowerCase().includes(searchQuery.toLowerCase()) || p.barcode?.toLowerCase().includes(searchQuery.toLowerCase())).map(product => (
                 <div key={product.id} className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 hover:border-recloud-300 transition-all flex flex-col group relative">
                   <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    {currentUser?.role === 'admin' && (
+                    {['admin', 'inventory_manager'].includes(currentUser?.role) && (
                       <>
                         <button onClick={() => { setEditProductData(product); setIsEditProductOpen(true); }} className="p-2 bg-white rounded-lg shadow border border-slate-100 text-blue-500 hover:bg-blue-50"><Edit className="w-3 h-3"/></button>
-                        {currentUser?.role === 'admin' && (
-<button onClick={() => { if(window.confirm('Delete product?')) handleDeleteProduct(product.id); }} className="p-2 bg-white rounded-lg shadow border border-slate-100 text-red-500 hover:bg-red-50"><Trash2 className="w-3 h-3"/></button>
-)}
+                        <button onClick={() => { if(window.confirm('Delete product?')) handleDeleteProduct(product.id); }} className="p-2 bg-white rounded-lg shadow border border-slate-100 text-red-500 hover:bg-red-50"><Trash2 className="w-3 h-3"/></button>
                       </>
                     )}
                   </div>

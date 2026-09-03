@@ -46,7 +46,11 @@ export const loginUser = async (email, password) => {
 };
 
 export const resetUserPassword = async (email) => {
-  await sendPasswordResetEmail(auth, email);
+  const actionCodeSettings = {
+    url: 'https://recloud-erp.web.app/?mode=login',
+    handleCodeInApp: false
+  };
+  await sendPasswordResetEmail(auth, email, actionCodeSettings);
 };
 
 export const addUserWorkspace = async (uid, tenantId, companyName, role) => {
@@ -96,7 +100,11 @@ export const createAuthUser = async (email, name) => {
   const tempPassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
   const userCredential = await createUserWithEmailAndPassword(secondaryAuth, email, tempPassword);
   await updateProfile(userCredential.user, { displayName: name });
-  await sendPasswordResetEmail(auth, email);
+  const actionCodeSettings = {
+    url: 'https://recloud-erp.web.app/?mode=login',
+    handleCodeInApp: false
+  };
+  await sendPasswordResetEmail(auth, email, actionCodeSettings);
   await signOut(secondaryAuth);
   return userCredential.user.uid;
 };

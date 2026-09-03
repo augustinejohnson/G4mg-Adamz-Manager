@@ -631,7 +631,16 @@ export default function HrModule({
                           </div>
                           <div className="md:col-span-2">
                             <label className="block text-sm font-bold text-slate-700 mb-2">Account Name</label>
-</table>
+                            <input type="text" value={settingsForm.accountName} onChange={e => setSettingsForm({...settingsForm, accountName: e.target.value})} className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-recloud-500/20 focus:border-recloud-500 outline-none transition-all" placeholder="Account Name" />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="pt-6 mt-6 border-t border-slate-200">
+                        <button onClick={handleSaveSettings} disabled={isSavingSettings} className="px-6 py-3 bg-recloud-600 hover:bg-recloud-700 text-white font-bold rounded-xl shadow-lg shadow-recloud-600/30 transition-all active:scale-95 disabled:opacity-50">
+                          {isSavingSettings ? 'Saving...' : 'Save Configuration'}
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ) : hrTab === 'recruitment' ? (

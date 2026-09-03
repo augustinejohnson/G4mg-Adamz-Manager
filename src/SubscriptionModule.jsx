@@ -58,9 +58,9 @@ export default function SubscriptionModule({ currentTenant, tenantConfig, curren
   const getPaystackProps = (plan) => {
     let usdAmount = 0;
     if (plan === 'basic') {
-      usdAmount = billingCycle === 'yearly' ? 120 : 12;
+      usdAmount = billingCycle === 'yearly' ? 2000 : 200;
     } else {
-      usdAmount = billingCycle === 'yearly' ? 200 : 20;
+      usdAmount = billingCycle === 'yearly' ? 2000 : 200;
     }
     
     // Convert to NGN at 1500 NGN per 1 USD, multiplied by 100 to get Kobo
@@ -140,7 +140,7 @@ export default function SubscriptionModule({ currentTenant, tenantConfig, curren
             <div className="mb-8">
               <h3 className="text-2xl font-bold text-slate-800 mb-2">Basic Plan</h3>
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-5xl font-black text-slate-800">{billingCycle === 'yearly' ? '$120' : '$12'}</span>
+                <span className="text-5xl font-black text-slate-800">{billingCycle === 'yearly' ? '$2000' : '$200'}</span>
                 <span className="text-slate-500 font-medium">/ {billingCycle === 'yearly' ? 'year' : 'month'}</span>
               </div>
               <p className="text-slate-500">Perfect for small businesses getting started with essential ERP tools.</p>
@@ -168,7 +168,7 @@ export default function SubscriptionModule({ currentTenant, tenantConfig, curren
             <div className="mb-8 relative z-10">
               <h3 className="text-2xl font-bold mb-2 text-white">Premium Plan</h3>
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-5xl font-black text-white">{billingCycle === 'yearly' ? '$200' : '$20'}</span>
+                <span className="text-5xl font-black text-white">{billingCycle === 'yearly' ? '$2000' : '$200'}</span>
                 <span className="text-recloud-100 font-medium">/ {billingCycle === 'yearly' ? 'year' : 'month'}</span>
               </div>
               <p className="text-recloud-100">Full power for growing enterprises. Complete access to all advanced modules.</p>

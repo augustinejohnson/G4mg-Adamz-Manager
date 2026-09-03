@@ -65,8 +65,8 @@ export default function DiscussModule({ currentTenant, currentUser, employees = 
       const data = await getChatMessages(channelId, currentTenant);
       // Sort messages by timestamp
       const sorted = data.sort((a, b) => {
-        const timeA = a.timestamp?.seconds || 0;
-        const timeB = b.timestamp?.seconds || 0;
+        const timeA = a.timestamp?.seconds || Infinity;
+        const timeB = b.timestamp?.seconds || Infinity;
         return timeA - timeB;
       });
       setMessages(sorted);
@@ -124,7 +124,8 @@ export default function DiscussModule({ currentTenant, currentUser, employees = 
       await addChatMessage(activeChannel.id, msgData, currentTenant);
       setNewMessageText('');
       setAttachedFile(null);
-      loadMessages(activeChannel.id); // Reload to show new message
+      setMessages(prev => [...prev, { ...msgData, id: 'temp-' + Date.now(), timestamp: { seconds: Date.now() / 1000 } }]);
+      loadMessages(activeChannel.id); // Reload to ensure sync
     } catch (err) {
       console.error(err);
     }
